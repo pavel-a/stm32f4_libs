@@ -22,3 +22,6 @@
 
 *.pdf binary
 *.jpg binary
+*.txt text eol=crlf
+*.js text eol=lf
+*.html text eol=lf
