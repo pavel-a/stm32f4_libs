@@ -1,0 +1,24 @@
+#
+
+* text=noauto
+
+*.c text eol=lf
+*.h text eol=lf
+*.s text eol=lf
+*.hex text eol=lf
+*.ld text eol=lf
+
+# Eclipse ...
+.project text eol=lf
+.cproject text eol=lf
+*.icf text eol=lf
+*.eww text eol=lf
+*.ewp text eol=lf
+*.ewd text eol=lf
+
+# Keil
+*.uvprojx text eol=crlf
+*.uvoptx text eol=crlf
+
+*.pdf binary
+*.jpg binary
