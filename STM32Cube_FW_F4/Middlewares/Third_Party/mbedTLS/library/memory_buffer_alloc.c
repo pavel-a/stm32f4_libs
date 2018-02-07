@@ -91,9 +91,6 @@ buffer_alloc_ctx;
 
 static buffer_alloc_ctx heap;
 
-static int verify_chain( void );
-static int check_all_free( void );
-
 #if defined(MBEDTLS_MEMORY_DEBUG)
 static void debug_header( memory_header *hdr )
 {

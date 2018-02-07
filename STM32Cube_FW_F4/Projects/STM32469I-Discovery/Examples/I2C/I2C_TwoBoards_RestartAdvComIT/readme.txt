@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example describes how to perform I2C data buffer sequential transmission/reception 
-between two boards using an interrupt.
+How to perform multiple I2C data buffer transmission/reception between two boards, 
+in interrupt mode and with restart condition.
 
    _________________________                        _________________________
   |     ____________________|                      |_____________________    |

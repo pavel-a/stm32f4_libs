@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This directory contains a set of sources files that implement an example that 
-uses semaphore from ISR with CMSIS RTOS API 
+How to use semaphore from ISR with CMSIS RTOS API.
 
 This application creates a thread that toggle LED through semaphore given 
 from ISR.

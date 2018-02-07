@@ -48,8 +48,7 @@
   
 @par Application Description
 
-This application is a part of the USB Device Library package using STM32Cube firmware. It describes how to 
-use USB device application based on the Custom HID Class on the STM32F4xx devices.
+This application shows how to use the USB device application based on the Human Interface (HID) on the STM32F4xx devices.
 
 This is a typical application on how to use the STM32F4xx USB OTG Device peripheral, where the STM32 MCU is 
 enumerated as a HID compliant device using the native PC Host HID driver to which the STM324xG-EVAL

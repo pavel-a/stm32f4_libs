@@ -48,11 +48,10 @@
 
 @par Application Description
 
-This directory contains a set of sources files that implement an application
-that uses message queues with CMSIS RTOS API
+How to use message queues with CMSIS RTOS API.
 
 This example creates two threads that send and receive an incrementing number 
-to/from a queue.
+to/from a queue, as following:
 One thread acts as a producer and the other as the consumer.  The consumer 
 is a higher priority than the producer and is set to block on queue reads. 
 The queue only has space for one item - as soon as the producer posts a

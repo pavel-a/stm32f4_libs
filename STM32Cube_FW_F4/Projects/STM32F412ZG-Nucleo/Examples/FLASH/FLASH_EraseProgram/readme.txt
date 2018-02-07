@@ -35,7 +35,7 @@
 
 @par Application Description 
 
-This application describes how to configure and use the FLASH HAL API to erase and program 
+This example describes how to configure and use the FLASH HAL API to erase and program
 the internal Flash memory.
   
 At the beginning of the main program the HAL_Init() function is called to reset 

@@ -46,7 +46,7 @@
 
 @par Application Description
 
-This application shows how to use semaphores with CMSIS RTOS API .
+How to use semaphores with CMSIS RTOS API.
 
 This application creates two threads that toggle LEDs through a shared semaphore,
 as following:

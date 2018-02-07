@@ -35,9 +35,9 @@
 
 @par Example Description 
 
-This example describes how to use the ADC in interrupt mode to convert data through the HAL API.
+How to use the ADC in interrupt mode to convert data through the HAL API.
 
-The ADC1 is configured to convert continuously ADC_CHANNEL_10.
+The ADC1 is configured to continuously convert ADC_CHANNEL_10.
 
 Each time an end of conversion occurs an interrupt is generated and the converted 
 data of ADC1 DR register is affected to the uhADCxConvertedValue variable in the 

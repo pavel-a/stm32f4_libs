@@ -35,8 +35,7 @@
 
 @par Example Description 
 
-This example provides a short description of how to use two ADC peripherals to perform 
-conversions in interleaved dual-mode.
+How to use two ADC peripherals to perform conversions in dual interleaved mode.
 
 DMA mode 3 is used in interleaved mode in 6-bit and 8-bit resolutions.
 

@@ -37,7 +37,7 @@
 
 @par Example Description 
 
-This example shows how to synchronize TIM peripherals in cascade mode.
+This example shows how to synchronize TIM2 and Timers (TIM3 and TIM4) in cascade mode.
 
 Timers synchronisation in cascade mode :
    ___________                     ___________              ___________                 

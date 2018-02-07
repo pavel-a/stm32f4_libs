@@ -48,8 +48,8 @@
 
 @par Application Description
 
-This directory contains a set of source files that implement demo based on STemWin 
-for STM32F4xx devices.
+This application shows how to implement a sample demonstration example allowing 
+to show some of the STemWin Library capabilities.
 
 The list of modules to be used is configured into the file Demo/GUIDEMO.h
 

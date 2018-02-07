@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example shows how to configure external interrupt lines.
+How to configure external interrupt lines.
 
 In this example, one EXTI line (EXTI_Line_0) is configured to generate
 an interrupt on each falling edge.

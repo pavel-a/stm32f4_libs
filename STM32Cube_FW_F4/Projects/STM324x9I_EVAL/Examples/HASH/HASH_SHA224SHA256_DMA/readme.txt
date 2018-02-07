@@ -35,11 +35,12 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the HASH peripheral to 
-hash data using SHA224 and SHA256 Algorithms.
+How to use the HASH peripheral to hash data with SHA224 and SHA256 algorithms.
+
 In this example, DMA is used to transfer data from internal RAM to HASH peripheral.
 The SHA224 message digest length is a 28 bytes and the SHA256 message digest length 
 is 32 bytes.
+
 The expected HASH digests (for SHA224 and SHA256) are already computed using an online
 HASH tool. Those values are compared to those computed by the HASH peripheral.
 In case there is a mismatch the red LED is turned ON.

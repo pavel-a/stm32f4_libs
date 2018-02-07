@@ -38,9 +38,9 @@
 
 @par Example Description 
 
-This example provides basic implementation of audio features.
-It allows to play two audio files at the same time through the SAI peripheral
-and using the external codec WM8994 implemented on the STM32446E-EVAL board.
+Basic implementation of audio features using BSP_AUDIO.
+This example uses the SAI peripheral and the external WM8994 codec implemented on the STM32446E-EVAL board
+to play two audio files at the same time.
 
 In this example the SAI input clock, provided by a dedicated PLL (PLLI2S), is
 configured to have an audio sampling frequency at 48 KHz on four channels:

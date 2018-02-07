@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This directory contains a set of source files that implement a simple "Hello
-Wolrd" application based on STemWin for STM32F4xx devices.
+Simple "Hello World" example based on STemWin for STM32F4xx devices.
 
 The application allows also to run the different Segger samples that can be
 downloaded from here:

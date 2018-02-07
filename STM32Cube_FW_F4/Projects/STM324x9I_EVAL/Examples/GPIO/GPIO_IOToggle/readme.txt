@@ -35,7 +35,7 @@
 
 @par Example Description 
 
-This example describes how to configure and use GPIOs through the STM32F4xx HAL API. 
+How to configure and use GPIOs through the HAL API.
   
 PG6, PG7, PG10 and PG12 IOs (configured in output push-pull mode) toggles in a forever loop.
 On STM324x9I-EVAL RevB board these IOs are connected to LED1, LED2, LED3 and LED4.

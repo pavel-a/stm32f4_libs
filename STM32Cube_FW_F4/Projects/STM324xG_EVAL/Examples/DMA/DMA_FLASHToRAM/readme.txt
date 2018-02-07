@@ -35,9 +35,9 @@
 
 @par Example Description 
 
-This example provides a description of how to use a DMA channel to transfer 
+This example provides a description of how to use a DMA to transfer 
 a word data buffer from Flash memory to embedded SRAM through 
-the STM32F4xx HAL API.
+the HAL API.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.

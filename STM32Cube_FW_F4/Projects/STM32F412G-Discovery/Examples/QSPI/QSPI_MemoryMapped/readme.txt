@@ -35,8 +35,10 @@
 
 @par Example Description
 
-This example describes how to erase part of the QSPI memory, write data in DMA mode and access to QSPI memory 
-in memory-mapped mode to check the data in a forever loop.
+How to use a QSPI memory in memory-mapped mode.
+
+This example describes how to erase a part of a QSPI memory, write data in DMA mode and access the QSPI memory 
+in memory-mapped mode to check the data in an infinite loop.
 
 LED1 toggles each time the data have been checked
 LED2 is on as soon as a data is wrong

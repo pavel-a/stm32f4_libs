@@ -39,7 +39,7 @@
 @par Example Description
 
   This example provides a description of how to configure DMA2D peripheral for transfer 
-  in Memory_to_Memory with pixel format conversion transfer mode.
+  in Memory-to-memory with Pixel Format Conversion (PFC) Mode.
 
   At the beginning of the main program the HAL_Init() function is called to reset 
   all the peripherals, initialize the Flash interface and the systick.

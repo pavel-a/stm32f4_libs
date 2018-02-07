@@ -36,11 +36,14 @@
 
 @par Example Description 
 
-This example shows how to synchronize TIM peripherals in cascade mode.
-In this example three timers are used:
+This example shows how to synchronize TIM2 and Timers (TIM3 and TIM4) in cascade mode.
 
-Timers synchronization in cascade mode:
-                         
+Timers synchronisation in cascade mode:
+   ___________                     ___________              ___________                 
+  |   MASTER  |TRGO_Update   ITR2 |  SLAVE 1  |       ITR1 |  SLAVE 2  |                 
+  |    TIM3   |-------------------|    TIM2   |------------|    TIM4   |               
+  |___________|                   |___________|            |___________| 
+                                 
 
 1/ TIM2 is configured as Master Timer:
    - PWM Mode is used

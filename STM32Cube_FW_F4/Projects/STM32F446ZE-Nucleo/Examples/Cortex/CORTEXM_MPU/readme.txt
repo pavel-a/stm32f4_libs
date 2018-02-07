@@ -35,8 +35,9 @@
 
 @par Example Description 
 
-This example presents the MPU features on STM32F4xx devices and it can be easily ported to any
-other STM32 device supporting MPU.
+This example presents the MPU feature. Its purpose is to configure a memory area
+as privileged read-only area and attempt to perform read and write operations
+in different modes.
 
 The example purpose is to configure a memory region as privileged read only region and tries to
 perform read and write operation in different mode.

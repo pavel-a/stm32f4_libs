@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    sdram_diskio_template.c
   * @author  MCD Application Team
-  * @version V2.0.1
-  * @date    10-July-2017
+  * @version V2.0.2
+  * @date    10-November-2017
   * @brief   SDRAM Disk I/O template driver.This file needs to be copied under
              the application project alongside the respective header file.
   ******************************************************************************
@@ -148,7 +148,7 @@ DRESULT SDRAMDISK_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
 DRESULT SDRAMDISK_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 {
   uint32_t *pDstBuffer = (uint32_t *)buff;
-  uint32_t BufferSize = (BLOCK_SIZE * count)/4 + count;
+  uint32_t BufferSize = (BLOCK_SIZE * count)/4;
   uint32_t *pSramAddress = (uint32_t *) (SDRAM_DEVICE_ADDR + (sector * BLOCK_SIZE));
 
   for(; BufferSize != 0; BufferSize--)
@@ -195,7 +195,7 @@ DRESULT SDRAMDISK_ioctl(BYTE lun, BYTE cmd, void *buff)
 
   /* Get erase block size in unit of sector (DWORD) */
   case GET_BLOCK_SIZE :
-    *(DWORD*)buff = BLOCK_SIZE;
+    *(DWORD*)buff = 1;
 	res = RES_OK;
     break;
 

@@ -46,7 +46,7 @@
 
 @par Application Description
 
-This application aims to describe how to use the MPU feature of FreeRTOS.
+How to use the MPU feature of FreeRTOS.
 
 This application implements five tasks in both User mode and Privileged mode, 
 and using both the xTaskCreate() and xTaskCreateRestricted() API functions. 

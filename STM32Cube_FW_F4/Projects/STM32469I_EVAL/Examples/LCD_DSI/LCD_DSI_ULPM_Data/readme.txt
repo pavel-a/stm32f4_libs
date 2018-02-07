@@ -37,7 +37,7 @@
 
 @par Example Description
 
-This example describes how to use the embedded LCD DSI controller 
+This example provides a description of how to use the embedded LCD DSI controller 
 (using IPs LTDC and DSI Host) to drive the KoD LCD mounted on board and manage entry and exit in 
 DSI ULPM mode on data lane only. In this mode, the DSI PHY state machine is entering a low power state
 on data lane and allows to save some power when the LCD does not need to display. 

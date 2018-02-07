@@ -35,10 +35,9 @@
 
 @par Example Description 
 
-This example shows how to configure and use the CEC peripheral to receive and 
-transmit messages in the case where one device supports two distinct logical
-addresses at the same time.
-
+How to configure and use the CEC peripheral to receive and transmit messages 
+in the case where one device supports two distinct logical addresses at the 
+same time.
 
 - Hardware Description
 

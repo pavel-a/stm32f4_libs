@@ -35,9 +35,9 @@
 
 @par Example Description 
 
-This example provides basic implementation of audio features.
-It allows to play an audio file through the I2S peripheral and using the external
-codec implemented on the STM324xG_EVAL board.
+Basic implementation of audio features. This example allows playing an audio 
+file with an external codec on the STM324xG_EVAL board through the I2S 
+peripheral using DMA transfer.
 
 In this example the I2S input clock, provided by a dedicated PLL (PLLI2S),  is
 configured to have an audio sampling frequency at 48 KHz with Master clock enabled.

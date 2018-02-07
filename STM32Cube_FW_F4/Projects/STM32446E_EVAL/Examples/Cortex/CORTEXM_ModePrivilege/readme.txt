@@ -35,9 +35,8 @@
 
 @par Example Description 
 
-This example shows how to modify Cortex-M4 Thread mode privilege access and stack.
-Cortex-M4 Thread mode is entered on Reset, and can be entered as a result of an
-exception return.  
+This example shows how to modify Thread mode privilege access and stack. Thread 
+mode is entered on reset or when returning from an exception. 
 
 The associated program is used to:
 

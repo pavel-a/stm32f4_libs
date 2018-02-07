@@ -35,8 +35,9 @@
 
 @par Example Description 
 
-This example shows how to configure the STM32F4xx system to measure different
-Low-power modes current consumption.
+How to configure the system to measure the current consumption in different 
+low-power modes.
+
 The Low Power modes are:
   - Sleep Mode
   - STOP mode with RTC

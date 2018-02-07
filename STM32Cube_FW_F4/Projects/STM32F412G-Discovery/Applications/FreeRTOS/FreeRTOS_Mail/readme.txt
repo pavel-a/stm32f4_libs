@@ -48,7 +48,7 @@
 
 @par Application Description
 
-This application shows how to use mail queues with CMSIS RTOS API.
+How to use mail queues with CMSIS RTOS API.
 
 This example creates two threads that send and receive mail
 the mail to send/receive is a structure that holds three variables (var1 and var2 are uint32, var3 is a uint8)

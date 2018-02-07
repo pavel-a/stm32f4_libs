@@ -48,8 +48,7 @@
 
 @par Application Description 
 
-This application is a part of the USB Host Library package using STM32Cube firmware. It describes how to use
-USB host application based on the Media Transfer Protocol (MTP) on the STM32F4xx devices.
+This application shows how to use the USB host application based on the Media Transfer Protocol (MTP) on the STM32F4xx devices.
 
 MTP is used to transfer data between computer/Host and devices connected to it. This protocol was 
 developed for intelligent storage devices for downloading photographs from digital cameras music files

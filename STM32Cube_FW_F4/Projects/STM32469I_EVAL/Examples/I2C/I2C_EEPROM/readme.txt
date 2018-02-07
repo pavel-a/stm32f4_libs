@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example describes how to ensure I2C Data buffer transmission and reception 
-with DMA. The communication is done with an I2C EEPROM memory.
+How to handle I2C data buffer transmission/reception with DMA. In the example, 
+the device communicates with an I2C EEPROM memory.
 
 SCL Pin: PB.8
 SDA Pin: PB.9

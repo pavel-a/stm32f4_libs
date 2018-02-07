@@ -35,7 +35,9 @@
 
 @par Example Description
 
-This example describes how to execute a part of the code from the QSPI memory. To do this, 
+How to execute code from QSPI memory after code loading.
+
+This example describes how to execute a part of the code from a QSPI memory. To do this, 
 a section is created where the function is stored.
 
 At the startup, the QSPI memory is erased, then the data are copied from the initialization

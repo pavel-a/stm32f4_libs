@@ -48,9 +48,8 @@
 
 @par Application Description 
 
-This application is a part of the USB Device Library package using STM32Cube firmware. It describes how to 
-use USB device application based on the AUDIO Class implementation of an audio streaming 
-(Out: Speaker/Headset) capability on the STM32F4xx devices.
+This application shows how to use the implementation of the audio streaming (Out: Speaker/Headset) 
+capability on the STM32F4xx devices.
 
 It follows the "Universal Serial Bus Device Class Definition for Audio Devices Release 1.0 March 18, 
 1998" defined by the USB Implementers Forum for reprogramming an application through USB-FS-Device. 

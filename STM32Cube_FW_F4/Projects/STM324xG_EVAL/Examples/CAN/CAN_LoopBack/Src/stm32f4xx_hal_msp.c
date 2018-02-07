@@ -2,11 +2,11 @@
   ******************************************************************************
   * @file    CAN/CAN_LoopBack/Src/stm32f4xx_hal_msp.c
   * @author  MCD Application Team
-  * @brief   HAL MSP module.    
+  * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>>
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -30,8 +30,8 @@
   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
-  ******************************************************************************  
-  */ 
+  ******************************************************************************
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -77,7 +77,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
   /* CAN1 TX GPIO pin configuration */
   GPIO_InitStruct.Pin = CANx_TX_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Alternate =  CANx_TX_AF;
   
@@ -86,7 +86,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
   /* CAN1 RX GPIO pin configuration */
   GPIO_InitStruct.Pin = CANx_RX_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Alternate =  CANx_RX_AF;
   
@@ -94,11 +94,11 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
 }
 
 /**
-  * @brief ADC MSP De-Initialization 
+  * @brief CAN MSP De-Initialization 
   *        This function frees the hardware resources used in this example:
   *          - Disable the Peripheral's clock
-  *          - Revert GPIO to their default state
-  * @param hadc: ADC handle pointer
+  *          - Revert GPIO configuration to their default state
+  * @param hcan: CAN handle pointer
   * @retval None
   */
 void HAL_CAN_MspDeInit(CAN_HandleTypeDef *hcan)

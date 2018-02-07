@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example describes how to use the ADC and DMA to transfer continuously 
-converted data from ADC to memory.
+How to use the ADC2 and DMA to transfer continuously converted data from 
+ADC2 to memory.
 
 The ADC2 is configured to convert continuously ADC_CHANNEL_5.
 

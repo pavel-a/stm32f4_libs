@@ -34,7 +34,8 @@
   @endverbatim
 
 @par Example Description 
-This example describes how to configure and use GPIOs through the HAL API.
+
+How to configure and use GPIOs through the HAL API.
 
 On STM32F4xx-Nucleo, PA05 GPIO pin is linked to LED2 - Green.
 Main function configures GPIO in output pushpull mode, then in while loop, HAL 

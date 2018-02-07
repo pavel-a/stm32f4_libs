@@ -49,6 +49,9 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+
+#define  USB_DEFAULT_BLOCK_SIZE  512
+
 /* Private variables ---------------------------------------------------------*/
 extern USBH_HandleTypeDef  hUSB_Host;
 
@@ -249,7 +252,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
 
     if(USBH_MSC_GetLUNInfo(&hUSB_Host, lun, &info) == USBH_OK)
     {
-      *(DWORD*)buff = info.capacity.block_size;
+      *(DWORD*)buff = info.capacity.block_size / USB_DEFAULT_BLOCK_SIZE;
       res = RES_OK;
     }
     else

@@ -35,10 +35,10 @@
 
 @par Example Description
  
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure SPI Data buffer transmission and reception using Interrupt, in an advance 
-communication mode: Master board is always sending command to slave before any
-transmission and Slave board is sending acknowledge before going further.
+This example guides you through the different configuration steps by mean of HAL API
+to transmit/receive SPI data buffer using Interrupt, in an advanced communication mode :
+The master board always sends the command to the slave before any transmission is performed.
+The slave board sends an acknowledge before going further.
 
 - Hardware Description
 

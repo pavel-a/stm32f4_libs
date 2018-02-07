@@ -33,13 +33,12 @@
   ******************************************************************************
   @endverbatim
 
-@par Example Description 
+@par Example Description
 
-This example provides a description of how to set a communication with the CAN
-in loopback mode.
+How to set up a communication with the CAN in loopback mode.
 
 The CAN cell first performs a transmission and a reception of a standard data
-frame by polling at 175 Kbps. The received frame is checked and some LEDs light
+frame by polling at 1 MBit/s. The received frame is checked and some LEDs light
 up to indicate whether the communication was successful.
 
 STM32 Eval board's LEDs can be used to monitor the transfer status:
@@ -61,29 +60,28 @@ STM32 Eval board's LEDs can be used to monitor the transfer status:
 @par Directory contents 
 
   - CAN/CAN_LoopBack/Inc/stm32f4xx_hal_conf.h    HAL configuration file
+  - CAN/CAN_LoopBack/Inc/main.h                  Header for main.c module  
   - CAN/CAN_LoopBack/Inc/stm32f4xx_it.h          Interrupt handlers header file
-  - CAN/CAN_LoopBack/Inc/main.h                  Main program header file  
-  - CAN/CAN_LoopBack/Src/stm32f4xx_it.c          Interrupt handlers
   - CAN/CAN_LoopBack/Src/main.c                  Main program
-  - CAN/CAN_LoopBack/Src/stm32f4xx_hal_msp.c     HAL MSP module
-  - CAN/CAN_LoopBack/Src/system_stm32f4xx.c      STM32F4xx system clock configuration file
+  - CAN/CAN_LoopBack/Src/stm32f4xx_msp.c         HAL MSP module
+  - CAN/CAN_LoopBack/Src/stm32f4xx_it.c          Interrupt handlers
+  - CAN/CAN_LoopBack/Src/system_stm32f4xx.c      STM32F4xx system source file
 
 
 @par Hardware and Software environment
 
-  - This example runs on STM32F429xx/STM32F439xx devices.
+  - This example runs on STM32F429xx devices.
     
-  - This example has been tested with STM324x9I-EVAL RevB evaluation board and can be
+  - This example has been tested with STM324x9I-EVAL board and can be
     easily tailored to any other supported device and development board.
 
- 
+
 @par How to use it ? 
 
 In order to make the program work, you must do the following :
- - Open your preferred toolchain 
+ - Open your preferred toolchain
  - Rebuild all files and load your image into target memory
  - Run the example
-    
+
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>
  */
- 

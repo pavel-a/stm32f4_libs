@@ -48,9 +48,8 @@
 
 @par Application Description 
 
-This application is a part of the USB Device Library package using STM32Cube firmware. It describes how to 
-use USB device application based on the Device Communication Class (CDC) following the PSTN subprotocol
-in the STM32F4xx devices using the OTG-USB and UART peripherals.
+This application shows how to use the USB device application based on the Device Communication Class (CDC) 
+following the PSTN subprotocol using the USB Device and UART peripherals.
 
 This is a typical application on how to use the STM32F4xx USB OTG Device peripheral where the STM32 MCU
 behaves as a USB-to-RS232 bridge following the Virtual COM Port (VCP) implementation.

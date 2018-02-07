@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API 
-to ensure Time Stamp configuration using the RTC peripheral.
+This example guides you through the different configuration steps by means of the RTC 
+HAL API to demonstrate the timestamp feature.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.

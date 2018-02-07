@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example describes of how to use the embedded LCD DSI controller 
+This example provides a description of how to use the embedded LCD DSI controller 
 (using IPs LTDC and DSI Host) to drive the KoD LCD mounted on board.
 
 The goal of this example is to display a QVGA landscape (320x240) images on LCD glass

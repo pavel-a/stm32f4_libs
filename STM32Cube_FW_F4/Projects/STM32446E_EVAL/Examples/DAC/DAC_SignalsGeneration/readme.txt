@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the DAC peripheral to generate 
-several signals using DMA controller.
+This example provides a description of how to use the DAC peripheral to 
+generate several signals using DMA controller.
 
 For each press on User push-button, a signal has been selected and can be monitored on  
 the DAC channel one:

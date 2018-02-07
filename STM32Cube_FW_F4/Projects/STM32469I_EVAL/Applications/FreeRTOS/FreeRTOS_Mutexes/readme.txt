@@ -48,10 +48,10 @@
 
 @par Application Description
 
-This directory contains a set of source files that implement an application
-that uses mutexes with CMSIS RTOS API 
+How to use mutexes with CMSIS RTOS API.
 
-This application creates three threads with different priorities that access the same mutex.
+This application creates three threads, with different priorities, that access the 
+same mutex, as described below:
 
 MutexHighPriorityThread() has the highest priority, thus executes 
 first and grabs the mutex and sleeps for a short period to let the lower 

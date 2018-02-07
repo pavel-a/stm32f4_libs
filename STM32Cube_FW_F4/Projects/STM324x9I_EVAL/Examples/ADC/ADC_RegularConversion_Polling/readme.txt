@@ -35,7 +35,7 @@
 
 @par Example Description 
 
-This example describes how to use the ADC in Polling mode to convert data through the HAL API.
+How to use the ADC in Polling mode to convert data through the HAL API.
 
 This example describes how to use the ADC3 and Polling to convert data from 
 ADC3 channel8.

@@ -38,8 +38,7 @@
 
 @par Example Description
 
-  This example describes how to configure the LTDC peripheral to display two Layers  
-  at the same time.
+  How to configure the LTDC peripheral to display two layers at the same time.
   The goal of this example is to explain how to blend two layers and how to display 
   an image with L8 (8bits per pixels indexed) as pixel format. 
 

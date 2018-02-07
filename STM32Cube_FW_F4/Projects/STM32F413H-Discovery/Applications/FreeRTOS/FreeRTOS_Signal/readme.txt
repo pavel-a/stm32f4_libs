@@ -48,7 +48,7 @@
 
 @par Application Description
 
-This application shows how to use thread signalling using CMSIS RTOS API.
+How to perform thread signaling using CMSIS RTOS API.
 
 This example creates three threads with the same priority.
 

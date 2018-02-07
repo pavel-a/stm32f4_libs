@@ -48,7 +48,7 @@
 
 @par Application Description
 
-This application shows how to use thread signalling from an interrupt using CMSIS RTOS API.
+How to perform thread signaling from an interrupt using CMSIS RTOS API.
 
 This example creates a threads that calls osSignalWait to wait for a signal to set bit1 and bit2 then toggles LED2.
 

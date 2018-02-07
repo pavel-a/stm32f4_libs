@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This application is a part of the USB Host Library package using STM32Cube firmware. It describes how to use
-USB host application based on the Mass Storage Class (MSC) on the STM32F4xx devices.
+This application shows how to use the USB host application based on the Mass Storage Class (MSC) on the STM32F4xx devices.
 
 This is a typical application on how to use the STM32F446xx USB OTG Host peripheral to operate with an USB 
 flash disk using the Bulk Only Transfer (BOT) and Small Computer System Interface (SCSI) transparent

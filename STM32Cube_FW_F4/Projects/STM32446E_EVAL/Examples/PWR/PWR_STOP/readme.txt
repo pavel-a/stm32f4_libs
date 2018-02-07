@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example shows how to enter Stop mode and wake up from this mode 
-by using Key push button EXTI15_10.
+How to enter the Stop mode and wake up from this mode by using the RTC wakeup 
+timer event or an interrupt.
 
 In the associated software
   - the system clock is set to 180 MHz.

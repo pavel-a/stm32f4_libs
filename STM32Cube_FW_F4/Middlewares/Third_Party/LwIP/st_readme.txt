@@ -47,7 +47,20 @@
   ******************************************************************************
   @endverbatim
 
-### 23-December-2106 ###
+### 10-November-2017 ###
+========================
+  + Upgrade to use LwIP V2.0.3 version
+    - For detailed list of new features and bug fixes please refer to CHANGELOG.txt
+  + Updates done LwIP core
+    - httpd.c: add include "lwip/sys.h"
+    - lowpan6.c: fix MDK-ARM compilation errors.
+    - fix variable "var" was set but never used warnings in many files
+  + Updates on ST's port "/system/arch/cc.h" file:
+    - define LWIP_TIMEVAL_PRIVATE to 0 add include sys/time.h for GNU C compiler
+    - remove LWIP_PLATFORM_DIAG definition, added by lwIP in arch.h
+    - redefine LWIP_PLATFORM_ASSERT
+     
+### 23-December-2016 ###
 ========================
   + Upgrade to use LwIP V2.0.0 version
     - For detailed list of new features and bug fixes please refer to CHANGELOG.txt

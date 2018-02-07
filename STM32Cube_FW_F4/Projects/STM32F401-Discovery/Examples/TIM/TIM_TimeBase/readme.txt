@@ -36,7 +36,7 @@
 @par Example Description 
 
 This example shows how to configure the TIM peripheral to generate a time base of 
-one seconde with the corresponding Interrupt request.
+one second with the corresponding Interrupt request.
 
 In this example TIM3 input clock (TIM3CLK) is set to 2 * APB1 clock (PCLK1), 
 since APB1 prescaler is different from 1.   

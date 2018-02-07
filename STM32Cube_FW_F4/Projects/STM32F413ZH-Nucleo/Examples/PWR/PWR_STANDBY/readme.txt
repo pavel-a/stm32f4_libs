@@ -35,8 +35,8 @@
 
 @par Example Description 
  
-This example shows how to enters the system to STANDBY mode and wake-up from this
-mode using external RESET or WKUP pin.
+How to enter the Standby mode and wake up from this mode by using an external 
+reset or the WKUP pin.
 
 In the associated software, the system clock is set to 100 MHz.
 The SysTick is programmed to generate an interrupt each 1 ms.

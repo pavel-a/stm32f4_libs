@@ -35,9 +35,8 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the ADC peripheral to 
-convert a regular channel in Triple interleaved mode using DMA in mode 2 with 
-6Msps .
+How to use the ADC peripheral to convert a regular channel in Triple 
+interleaved mode.
 
 The Triple interleaved delay is configured 5 ADC clk cycles.
 

@@ -35,7 +35,7 @@
 
 @par Example Description 
 
-This example provides a description of how to use a DMA channel to transfer 
+This example provides a description of how to use a DMA to transfer 
 a word data buffer from Flash memory to embedded SRAM through 
 the HAL API.
 

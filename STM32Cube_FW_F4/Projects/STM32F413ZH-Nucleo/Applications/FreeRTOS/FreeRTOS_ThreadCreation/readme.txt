@@ -46,7 +46,7 @@
 
 @par Application Description
 
-This application shows how to implement thread creation using CMSIS RTOS API. 
+How to implement thread creation using CMSIS RTOS API. 
 
 This application creates two threads with the same priority, which execute in 
 a periodic cycle of 18 seconds. 

@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example describes how to configure and use GPIOs through the HAL API. 
+How to configure and use GPIOs through the HAL API.
 
 PE.00, PE.01, PE.02 and PE.03 IOs (configured in output pushpull mode) toggle in a forever loop.
 On STM32412G-DISCOVERY board these IOs are connected to LED1, LED2, LED3 and LED4.

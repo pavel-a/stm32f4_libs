@@ -46,7 +46,7 @@
 
 @par Application Description
 
-This application shows how to use message queues with CMSIS RTOS API.
+How to use message queues with CMSIS RTOS API.
 
 This application creates two threads that send and receive an incrementing number 
 to/from a queue, as following:

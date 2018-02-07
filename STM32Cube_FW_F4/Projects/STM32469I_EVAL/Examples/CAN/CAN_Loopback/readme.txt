@@ -35,16 +35,15 @@
 
 @par Example Description
 
-This example provides a description of how to set a communication with the CAN
-in loopback mode.
+How to set up a communication with the CAN in loopback mode.
 
 The CAN cell first performs a transmission and a reception of a standard data
-frame by polling at 175 Kbps. The received frame is checked and some LEDs light
+frame by polling at 1 Mbit/s. The received frame is checked and some LEDs light
 up to indicate whether the communication was successful.
 
 STM32 Eval board's LEDs can be used to monitor the transfer status:
  - LED1 is ON when the transfer is complete.
- - LED3 is ON when there is a transfer error occurred.
+ - LED2 is ON when there is a transfer error occurred.
  - LED3 is ON when there is an initialization error occurred.
 
 
@@ -57,8 +56,6 @@ STM32 Eval board's LEDs can be used to monitor the transfer status:
 @note The application need to ensure that the SysTick time base is always set to 1 millisecond
       to have correct HAL operation.
 
-@note The connection of the LCD reset pin to a dedicated GPIO PK7 instead of the STM32F469 NRST pin may cause residual display on LCD with applications/examples that do not require display.
-	  The LCD clear can be ensured by hardware through the board's power off/power on or by software calling the BSP_LCD_Reset() function.
 
 @par Directory contents 
 
@@ -66,7 +63,7 @@ STM32 Eval board's LEDs can be used to monitor the transfer status:
   - CAN/CAN_LoopBack/Inc/main.h                  Header for main.c module  
   - CAN/CAN_LoopBack/Inc/stm32f4xx_it.h          Interrupt handlers header file
   - CAN/CAN_LoopBack/Src/main.c                  Main program
-  - CAN/CAN_LoopBack/Src/stm32f4xx_msp.c          HAL MSP module
+  - CAN/CAN_LoopBack/Src/stm32f4xx_msp.c         HAL MSP module
   - CAN/CAN_LoopBack/Src/stm32f4xx_it.c          Interrupt handlers
   - CAN/CAN_LoopBack/Src/system_stm32f4xx.c      STM32F4xx system source file
 

@@ -35,10 +35,7 @@
 
 @par Example Description 
 
-
-This example describes how to use the ADC in Polling mode to convert data through the HAL API.
-
-This example describes how to use the ADC1 with channel ADC_CHANNEL_4 in Polling mode to convert data.
+How to use the ADC in Polling mode to convert data through the HAL API.
 
 When the end of conversion occurs, the converted data of ADC1 DR register is 
 affected to the uhADCxConvertedValue variable.

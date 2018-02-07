@@ -36,7 +36,7 @@
 @par Example Description 
 
 This example describes how to use the RCC HAL API to configure the system clock (SYSCLK)  
-and modify the clock settings on run time. 
+and modify the clock settings in Run mode.
 
 In this example, after startup SYSCLK is configured to the max frequency using the PLL with
 HSI as clock source, the STM32F411RE-Nucleo board Key button (connected to EXTI Line13) will be 

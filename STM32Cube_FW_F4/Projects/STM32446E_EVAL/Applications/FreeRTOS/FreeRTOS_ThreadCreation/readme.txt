@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This directory contains a set of sources files that implement a thread creation 
-example using CMSIS RTOS API 
+How to implement thread creation using CMSIS RTOS API. 
 
 This example creates two threads with the same priority, which executes in 
 a periodic cycle of 15 seconds. 

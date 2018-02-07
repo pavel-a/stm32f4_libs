@@ -48,7 +48,7 @@
 
 @par Application Description
 
-This application shows how to use timers of CMSIS RTOS API.
+How to use timers of CMSIS RTOS API.
 
 This example creates a thread that toggle LED2 every 400 ms, and a periodic 
 timer that calls a callback function every 200 ms to toggle the LED1.

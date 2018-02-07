@@ -35,8 +35,9 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the DAC peripheral to 
+This example provides a description of how to use the DAC peripheral to 
 generate several signals using DMA controller.
+
 When the user presses the KEY push-button, DMA transfers the two selected 
 waveforms to the DAC.
 For each press on KEY button, a signal has been selected and can be monitored on  

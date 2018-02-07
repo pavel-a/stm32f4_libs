@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example shows how to use the TIM peripheral to generate a One pulse Mode 
-after a Rising edge of an external signal is received in Timer Input pin.
+This example shows how to use the TIM peripheral to generate a single pulse when
+a rising edge of an external signal is received on the timer Input pin.
 
 
 Clock setup for TIM4

@@ -36,8 +36,8 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the HASH peripheral to 
-hash data using SHA-1 and MD5 Algorithms.
+How to use the HASH peripheral to hash data using SHA-1 and MD5 algorithms 
+when data are fed to the HASH unit with DMA.
 
 For this example, DMA is used to transfer data from memory to the HASH processor.
 The message to hash is a 2048 bit data.

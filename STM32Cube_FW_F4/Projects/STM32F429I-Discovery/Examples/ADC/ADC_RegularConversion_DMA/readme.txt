@@ -35,14 +35,12 @@
 
 @par Example Description 
 
+How to use the ADC3 and DMA to transfer continuously converted data from 
+ADC3 to memory.
 
-This example describes how to use the ADC and DMA to transfer continuously 
-converted data from ADC to memory.
-
-This example describes how to use the ADC3 and DMA to transfer continuously 
-converted data from ADC3 to memory.
 The ADC3 is configured to convert continuously channel7(for STM32F429I-DISCOVERY)
 /channel8(for STM32F429I-Discovery RevC).
+
 Each time an end of conversion occurs the DMA transfers, in circular mode, the
 converted data from ADC3 DR register to the uhADCxConvertedValue variable.
 

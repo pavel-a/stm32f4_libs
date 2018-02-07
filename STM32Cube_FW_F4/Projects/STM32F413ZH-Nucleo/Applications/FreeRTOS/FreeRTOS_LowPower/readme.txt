@@ -46,7 +46,7 @@
 
 @par Application Description
 
-This application shows how to enter and exit low power mode with CMSIS RTOS API.
+How to enter and exit low-power mode with CMSIS RTOS API.
 
 This application creates two threads.
 

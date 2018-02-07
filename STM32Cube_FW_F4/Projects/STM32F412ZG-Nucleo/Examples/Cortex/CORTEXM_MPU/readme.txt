@@ -35,9 +35,9 @@
 
 @par Example Description 
 
-This example presents the MPU feature. The example purpose is to configure a 
-memory region as privileged read only region and tries to perform read and write 
-operation in different mode.
+This example presents the MPU feature. Its purpose is to configure a memory area
+as privileged read-only area and attempt to perform read and write operations
+in different modes.
 
 If the access is permitted LED1 is toggling. If the access is not permitted, 
 a memory management fault is generated and LED2 is ON.

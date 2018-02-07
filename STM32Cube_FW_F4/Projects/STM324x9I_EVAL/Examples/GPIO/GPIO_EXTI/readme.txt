@@ -35,7 +35,8 @@
 
 @par Example Description 
 
-This example shows how to configure external interrupt lines.
+How to configure external interrupt lines.
+
 In this example, 2 EXTI lines (EXTI Line0 and Line13) are configured  to generate
 an interrupt on each rising and falling edge, respectively. 
 In the interrupt routine a LED connected to a specific GPIO pin is toggled.

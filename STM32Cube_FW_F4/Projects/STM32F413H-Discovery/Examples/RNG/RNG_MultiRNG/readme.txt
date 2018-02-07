@@ -35,8 +35,7 @@
 
 @par Example Description 
 
-This example guides you through the HAL API different configuration steps 
-to ensure 32-bit long random numbers generation by RNG peripheral.
+Configuration of the RNG using the HAL API. This example uses the RNG to generate 32-bit long random numbers.
 
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.

@@ -35,9 +35,7 @@
 
 @par Example Description 
 
-This example shows how to configure and use the CEC peripheral to receive and 
-transmit messages.
-
+How to configure and use the CEC peripheral to receive and transmit messages.
 
 - Hardware Description
 

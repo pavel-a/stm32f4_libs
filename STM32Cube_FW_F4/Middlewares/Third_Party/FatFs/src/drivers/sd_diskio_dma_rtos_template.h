@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    sd_diskio_dma_rtos_template.h
   * @author  MCD Application Team
-  * @version V2.0.1
-  * @date    10-July-2017
+  * @version V2.0.2
+  * @date    10-November-2017
   * @brief   Header for sd_diskio_dma_rtos.c module. This is template file that
              needs to be adjusted and copied into the application project.
   ******************************************************************************

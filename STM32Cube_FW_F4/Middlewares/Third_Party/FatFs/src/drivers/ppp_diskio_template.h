@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    ppp_diskio.h
   * @author  MCD Application Team
-  * @version V2.0.1
-  * @date    10-July-2017
+  * @version V2.0.2
+  * @date    10-November-2017
   * @brief   Header for ppp_diskio.c module. the PPP diskio driver is not
              functional and is intended to show how to implement
 	     a FatFS diskio driver.

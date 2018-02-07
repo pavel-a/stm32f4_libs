@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This directory contains a set of sources files that implement an application
-that uses message queues with CMSIS RTOS API
+How to enter and exit low-power mode with CMSIS RTOS API.
 
 This application creates two threads.
 

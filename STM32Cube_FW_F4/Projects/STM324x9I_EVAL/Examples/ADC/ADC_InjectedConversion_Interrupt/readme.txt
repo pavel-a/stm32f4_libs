@@ -35,9 +35,8 @@
 
 @par Example Description 
 
-
-This example describes how to use the ADC in interrupt mode to convert data through 
-the HAL API.
+How to interrupt continuous ADC regular channel conversion using ADC injected 
+channels, and how to get the result of this conversion.
 
 This example describes how to interrupt continuous ADC3 regular channel8 conversion 
 using ADC3 injected channel12 and how to get the converted value of this conversion.

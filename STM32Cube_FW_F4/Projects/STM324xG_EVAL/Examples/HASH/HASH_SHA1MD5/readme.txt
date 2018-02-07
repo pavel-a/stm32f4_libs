@@ -35,10 +35,10 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the HASH peripheral to 
-hash data using SHA-1 and MD5 Algorithms.
+How to use the HASH peripheral to hash data with SHA-1 and MD5 algorithms.
 
-For this example, no DMA is used for data transfer.
+For this example, DMA is not used for data transfer, the CPU is using HASH peripheral in
+polling mode.
 
 The SHA-1 message digest result is a 160 bit data and the MD5 message digest result 
 is a 128 bit data.

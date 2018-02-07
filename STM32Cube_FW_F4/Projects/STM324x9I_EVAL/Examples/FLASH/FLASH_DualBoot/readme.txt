@@ -35,9 +35,8 @@
 
 @par Example Description 
 
-This example guides you through the different configuration steps by mean of HAL API
-how to program bank1 and bank2 of the Flash memory integrated within STM32F4xx devices 
-and swap between both of them.
+This example guides you through the different configuration steps to program the internal
+flash memory bank 1 and bank 2 and to swap between both of them by mean of the FLASH HAL API.
   
 At the beginning of the main program the HAL_Init() function is called to reset 
 all the peripherals, initialize the Flash interface and the systick.

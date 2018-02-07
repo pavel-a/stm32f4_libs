@@ -37,9 +37,8 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the CRYPTO peripheral to
-encrypt and decrypt data using AES in chaining modes (ECB, CBC, CTR) and all key
-sizes (128, 192, 256) Algorithm.
+This example provides a short description of how to use the CRYP peripheral to
+encrypt and decrypt data using AES in chaining modes (ECB, CBC, CTR).
 
 For this example, a firmware is used to interface with the Crypto peripheral
 in polling mode.

@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This application is a part of the USB Host Library package using STM32Cube firmware. It describes how to use
-USB host application based on the Mass Storage Class (MSC) on the STM32F4xx devices in RTOS mode
+This application shows how to use the USB host application based on the Mass Storage Class (MSC) on the STM32F4xx devices in RTOS mode
 configuration.
 
 This is a typical application on how to use the STM32F469xx USB OTG Host peripheral to operate with an USB 

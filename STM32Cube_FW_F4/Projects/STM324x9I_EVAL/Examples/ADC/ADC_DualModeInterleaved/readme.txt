@@ -35,9 +35,7 @@
 
 @par Example Description 
 
-
-This example provides a short description of how to use two ADC peripherals to
-perform conversions in interleaved dual-mode.
+How to use two ADC peripherals to perform conversions in dual interleaved mode.
 
 This example provides a short description of how to use the ADC peripheral to
 convert a regular channel in Dual interleaved mode using DMA in mode 3 with 5Msps.

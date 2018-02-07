@@ -35,7 +35,7 @@
 
 @par Example Description
  
-This example describes how to use the ADC in interrupt mode to convert data through the HAL API.
+How to use the ADC in interrupt mode to convert data through the HAL API.
 
 The ADC3 is configured to convert continuously ADC_CHANNEL_10.
 

@@ -50,6 +50,36 @@
   ******************************************************************************
   @endverbatim
 
+### V2.0.2/17-November-2017 ###
+============================
++ sdram_diskio_template.c  sram_diskio_template.c
+   Fix wrong buffer size in the (SRAM/SDRAM)DISK_read(), (SRAM/SDRAM)DISK_write()
+
++ sd_diskio_template.c
+  - define a generic 'SD_TIMEOUT' based on the BSP drivers defines. This fixes
+    a build issue when using this driver with the Adafruitshield.
+
++ sd_diskio_dma_rtos_template.c 
+  - add a check via  osKernelRunning(), to avoid runtime errors due to
+    osMessageXXX calls that needs the "osKernelStart()" call done first.
+
++ sd_diskio_dma_template.c, sd_diskio_dma_rtos_template.c 
+  - fix wrong address alignment when calling SCB_InvalidateDCache_by_Addr() and
+    SCB_CleanDCache_by_Addr(), the address has to be 32-Byte and not
+    32-bit aligned.
+
+  - fix BSP_SD_ReadCpltCallback() and BSP_SD_WriteCpltCallback() prototypes by
+    adding 'void' as argument to avoid IAR compiler errors
+
+
++ sd_diskio_template.c sd_diskio_dma_template.c, sd_diskio_dma_rtos_template.c 
+  - add the  flag "DISABLE_SD_INIT" to give the user the choice to initialize the SD
+    either in the application or in the FatFs diskio driver.
+
++ all xxx_diskio_template.c
+  - fix GET_BLOCK_SIZE ioctl call; the return value is in unit of sectors.
+
+
 ### V2.0.1/10-July-2017 ###
 ============================
 + sd_diskio_dma_template.c, sd_diskio_dma_rtos_template.c 

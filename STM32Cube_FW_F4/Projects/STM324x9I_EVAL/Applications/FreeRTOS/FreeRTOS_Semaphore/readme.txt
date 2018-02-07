@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This directory contains a set of sources files that implement an application that
-uses semaphores with CMSIS RTOS API 
+How to use semaphores with CMSIS RTOS API.
 
 This application creates two threads that toggle LEDs through a shared semaphore.
 

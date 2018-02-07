@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example describes how to perform I2C data buffer transmission/reception between 
-two boards in Polling mode.
+How to handle I2C data buffer transmission/reception between two boards, 
+in polling mode.
 
    _________________________                        _________________________
   |           ______________|                      |_________________        |

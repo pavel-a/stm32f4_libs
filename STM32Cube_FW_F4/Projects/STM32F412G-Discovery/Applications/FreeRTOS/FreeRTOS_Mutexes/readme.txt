@@ -48,7 +48,7 @@
 
 @par Application Description
 
-This application shows how to use mutexes with CMSIS RTOS API.
+How to use mutexes with CMSIS RTOS API.
 
 This example creates three threads, with different priorities, that access the 
 same mutex, as described below:

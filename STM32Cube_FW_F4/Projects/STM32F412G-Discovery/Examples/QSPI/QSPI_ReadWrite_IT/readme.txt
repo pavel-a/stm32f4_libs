@@ -35,8 +35,10 @@
 
 @par Example Description
 
-This example describes how to erase part of the QSPI memory, write data in IT mode, read data in IT mode 
-and compare the result in a forever loop.
+How to use a QSPI memory in interrupt mode.
+
+This example describes how to erase a part of a QSPI memory, write data in Interrupt mode, read data 
+in interrupt mode and compare the result in an infinite loop.
 
 LED1 toggles each time a new comparison is good
 LED2 is on as soon as a comparison error occurs

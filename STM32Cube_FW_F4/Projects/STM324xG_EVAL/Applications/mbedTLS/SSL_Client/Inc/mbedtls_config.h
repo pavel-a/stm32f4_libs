@@ -83,6 +83,9 @@
 /* Save RAM at the expense of ROM */
 #define MBEDTLS_AES_ROM_TABLES
 
+/* Disable double-width division */
+#define MBEDTLS_NO_UDBL_DIVISION
+
 /* Save RAM by adjusting to our exact needs */
 #define MBEDTLS_ECP_MAX_BITS   384
 #define MBEDTLS_MPI_MAX_SIZE    48 // 384 bits is 48 bytes

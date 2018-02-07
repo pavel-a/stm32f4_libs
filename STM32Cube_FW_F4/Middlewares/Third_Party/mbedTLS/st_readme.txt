@@ -44,7 +44,20 @@
   *
   ******************************************************************************
   @endverbatim
-	 
+
+### 10-November-2017 ###
+========================
+   + Upgrade to use mbedTLS V2.6.1
+   + fix missing prototype error,in the library/aes.c file, with EWARM toolchain when MBEDTLS_DEPRECATED_REMOVED is defined.
+
+
+### 09-October-2017 ###
+========================
+   + Upgrade to use mbedTLS V2.6.0
+   + Update the "net_socket_template.c" file to use LwIP API, this make it directly usable in the applications
+   + Fix compiler warnings by including newer patches from the mbedTLS git tree
+
+
 ### 23-December-2016 ###
 ========================
    + Upgrade to use mbedTLS V2.4.0

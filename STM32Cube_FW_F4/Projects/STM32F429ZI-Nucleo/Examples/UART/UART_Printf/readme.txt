@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example shows how to reroute the C library printf function to the UART. It 
-outputs a message sent by the UART on the HyperTerminal.
+This example shows how to re-route the C library printf function to the UART.
+The UART outputs a message on the HyperTerminal.
 
 - configuration 1: 
   connect the NUCLEO-F429ZI Rev.B board to the Hyperterminal through RS232 cable. Connect the 

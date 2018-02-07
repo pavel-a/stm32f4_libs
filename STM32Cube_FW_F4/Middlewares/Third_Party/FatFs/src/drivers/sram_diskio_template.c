@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    sram_diskio_template.c
   * @author  MCD Application Team
-  * @version V2.0.1
-  * @date    10-July-2017
+  * @version V2.0.2
+  * @date    10-November-2017
   * @brief   SRAM Disk I/O template driver.This file needs to be copied under the
              application project alongside the respective header file
   ******************************************************************************
@@ -145,7 +145,7 @@ DRESULT SRAMDISK_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
 #if _USE_WRITE == 1
 DRESULT SRAMDISK_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 {
-  uint32_t BufferSize = (BLOCK_SIZE * count) + count;
+  uint32_t BufferSize = (BLOCK_SIZE * count);
   uint8_t *pMem = (uint8_t *) (SRAM_DEVICE_ADDR + (sector * BLOCK_SIZE));
 
   for(; BufferSize != 0; BufferSize--)
@@ -192,7 +192,7 @@ DRESULT SRAMDISK_ioctl(BYTE lun, BYTE cmd, void *buff)
 
   /* Get erase block size in unit of sector (DWORD) */
   case GET_BLOCK_SIZE :
-    *(DWORD*)buff = BLOCK_SIZE;
+    *(DWORD*)buff = 1;
     res = RES_OK;
     break;
 

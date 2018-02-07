@@ -35,10 +35,10 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the HASH peripheral to 
-hash data using HMAC SHA-1 and HMAC MD5 Algorithms.
+How to use the HASH peripheral to hash data with HMAC SHA-1 
+and HMAC MD5 algorithms.
 
-For this example, DMA is not used for data transfer. In fact, the CPU is used in
+For this example, DMA is not used for data transfer, the CPU is using HASH peripheral in
 polling mode.
 
 The key used is long type (2088 bit = 261 bytes).

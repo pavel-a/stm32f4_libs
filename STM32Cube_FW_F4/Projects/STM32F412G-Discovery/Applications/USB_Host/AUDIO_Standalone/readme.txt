@@ -38,8 +38,7 @@
   
 @par Application Description
 
-This application is a part of the USB Host Library package using STM32Cube firmware. It describes how to use
-USB host application based on the Audio OUT class on the STM32F4xx devices.
+This application shows how to use the USB host application based on the Audio OUT class on the STM32F4xx devices.
 
 At the beginning of the main program the HAL_Init() function is called to reset all the peripherals,
 initialize the Flash interface and the systick. The user is provided with the SystemClock_Config()

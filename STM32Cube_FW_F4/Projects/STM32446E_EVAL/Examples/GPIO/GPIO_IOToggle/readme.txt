@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example describes how to configure and use GPIOs through the STM32F4xx HAL API. 
+How to configure and use GPIOs through the HAL API.
   
 PB11 and PB4 IOs (configured in output pushpull mode) toggles in a forever loop.
 On STM32446E-EVAL board these IOs are connected to LED1 and LED3.

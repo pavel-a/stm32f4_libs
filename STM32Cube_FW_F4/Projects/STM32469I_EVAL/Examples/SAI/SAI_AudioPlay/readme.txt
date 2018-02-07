@@ -35,8 +35,7 @@
 
 @par Example Description 
 
-This example show how to play an audio file using the DMA circular mode and 
-how to handle the buffer update.
+Use of the SAI HAL API to play an audio file in DMA circular mode and handle the buffer update.
 
       Plug a headphone to ear the sound  /!\ Take care of yours ears.
       Default volume is 20%.

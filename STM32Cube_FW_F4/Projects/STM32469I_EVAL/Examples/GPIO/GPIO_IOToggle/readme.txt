@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example describes how to configure and use GPIOs through the STM32F4xx HAL API. 
+How to configure and use GPIOs through the HAL API.
   
 PC10 IO (configured in output push-pull mode) toggles in a forever loop.
 

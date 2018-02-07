@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-  This example shows how to use the TIM peripheral to generate a One pulse Mode 
-  after a Rising edge of an external signal is received in Timer Input pin.
+  This example shows how to use the TIM peripheral to generate a single pulse when
+  a rising edge of an external signal is received on the timer Input pin.
 
   TIM2CLK = SystemCoreClock/2, we want to get TIM2 counter clock at 42 MHz:
              - Prescaler = (TIM2CLK / TIM2 counter clock) - 1

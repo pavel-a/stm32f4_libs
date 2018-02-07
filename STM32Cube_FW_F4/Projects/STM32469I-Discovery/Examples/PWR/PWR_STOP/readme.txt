@@ -35,8 +35,9 @@
 
 @par Example Description 
 
-This example shows how to enter the system in STOP mode and wake-up from this mode.
-This is achieved using User push-button EXTI0.
+How to enter the Stop mode and wake up from this mode by using the RTC wakeup 
+timer event or an interrupt.
+
 LED1 is ON during RUN mode and OFF during STOP mode.
 
 In the associated software

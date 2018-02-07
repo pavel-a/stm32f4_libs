@@ -1,4 +1,4 @@
-;******************** (C) COPYRIGHT 2017 STMicroelectronics ********************
+;/******************** (C) COPYRIGHT 2017 STMicroelectronics ********************
 ;* File Name          : startup_stm32f469xx.s
 ;* Author             : MCD Application Team
 ;* Description        : STM32F469xx devices vector table for EWARM toolchain.

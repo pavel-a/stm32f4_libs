@@ -35,9 +35,9 @@
 
 @par Example Description 
 
-This example provides basic implementation of audio features.
-It allows to play an audio file through the I2S peripheral and DMA-based transfer
-and using the external codec implemented on the STM32412G-DISCOVERY board.
+Basic implementation of audio features. This example allows playing an audio 
+file with an external codec on the STM32F412G-Discovery board through the I2S 
+peripheral using DMA transfer.
 
 In this example the I2S input clock, provided by a dedicated PLL (PLLI2S),  is
 configured to have an audio sampling frequency at 8 KHz with Master clock enabled.

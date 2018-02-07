@@ -35,8 +35,10 @@
 
 @par Example Description
 
-This example describes how to erase part of the QSPI memory, write data in DMA mode, read data in DMA mode 
-and compare the result in a forever loop.
+How to use a QSPI memory in DMA mode.
+
+This example describes how to erase part of a QSPI memory, write data in DMA mode, read data in DMA mode 
+and compare the result in an infinite loop.
 
 LED3 toggles each time a new comparison is good
 LED4 is on as soon as a comparison error occurs

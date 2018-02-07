@@ -35,10 +35,9 @@
 
 @par Example Description 
 
-This example shows how to configure and use the CEC peripheral to receive and 
-transmit messages between two boards while a third one (the spy device) listens 
-but doesn't acknowledge the received messages.
-
+How to configure and use the CEC peripheral to receive and transmit messages 
+between two boards, while a third board (the spy device) listens but doesn't 
+acknowledge the received messages.
 
 - Hardware Description
 

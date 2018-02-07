@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example shows how to ensure UART Data buffer transmission and reception with 
-DMA. The communication is done with the Hyperterminal PC application.
+This example describes an UART transmission (transmit/receive) in DMA mode
+between a board and an HyperTerminal PC application.
 
 Board: STM32469I-EVAL
 Tx Pin: PA.09

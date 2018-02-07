@@ -48,8 +48,7 @@
 
 @par Application Description
 
-This application is a part of the USB Host Library package using STM32Cube firmware. It describes how to use
-USB host application based on the Communication Class (CDC) on the STM32Fxx devices.
+This application shows how to use the USB host application based on the Communication Class (CDC) on the STM32Fxx devices.
 
 This is a typical application on how to use the STM32F469xx USB OTG Host peripheral to operate with an USB 
 CDC device application based on the two CDC transfer directions with a dynamic serial configuration:

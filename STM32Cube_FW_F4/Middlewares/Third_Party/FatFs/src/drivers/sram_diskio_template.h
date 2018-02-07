@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    sram_diskio_template.h
   * @author  MCD Application Team
-  * @version V2.0.1
-  * @date    10-July-2017
+  * @version V2.0.2
+  * @date    10-November-2017
   * @brief   Header for sram_diskio_template.c module.This file has to be
              customized and copied under the application project
   ******************************************************************************

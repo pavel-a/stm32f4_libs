@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example describes how to perform I2C data buffer transmission/reception between 
-two boards, via DMA.
+How to handle I2C data buffer transmission/reception between two boards, 
+via DMA.
  
    _________________________                        _________________________
   |           ______________|                      |______________           |

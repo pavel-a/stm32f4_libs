@@ -48,8 +48,8 @@
 
 @par Application Description
 
-This directory contains a set of source files that implement demo based on STemWin 
-for STM32F4xx devices.
+This application shows how to implement a sample demonstration example allowing 
+to show some of the STemWin Library capabilities.
 
 Note that the following user files may need to be updated:
   LCDConf_stm32f429i_disco_MB1075.c

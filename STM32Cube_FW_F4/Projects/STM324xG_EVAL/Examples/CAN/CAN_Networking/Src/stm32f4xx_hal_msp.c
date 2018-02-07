@@ -2,11 +2,11 @@
   ******************************************************************************
   * @file    CAN/CAN_Networking/Src/stm32f4xx_hal_msp.c
   * @author  MCD Application Team
-  * @brief   HAL MSP module.    
+  * @brief   HAL MSP module.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>>
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -30,8 +30,8 @@
   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
-  ******************************************************************************  
-  */ 
+  ******************************************************************************
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -56,43 +56,43 @@
   */
 
 /**
-  * @brief CAN MSP Initialization 
-  *        This function configures the hardware resources used in this example: 
+  * @brief CAN MSP Initialization
+  *        This function configures the hardware resources used in this example:
   *           - Peripheral's clock enable
-  *           - Peripheral's GPIO Configuration  
+  *           - Peripheral's GPIO Configuration
   *           - NVIC configuration for DMA interrupt request enable
   * @param hcan: CAN handle pointer
   * @retval None
   */
-void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
+void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan)
 {
   GPIO_InitTypeDef   GPIO_InitStruct;
-  
+
   /*##-1- Enable peripherals and GPIO Clocks #################################*/
   /* CAN1 Periph clock enable */
   CANx_CLK_ENABLE();
   /* Enable GPIO clock ****************************************/
   CANx_GPIO_CLK_ENABLE();
-  
-  /*##-2- Configure peripheral GPIO ##########################################*/ 
+
+  /*##-2- Configure peripheral GPIO ##########################################*/
   /* CAN1 TX GPIO pin configuration */
   GPIO_InitStruct.Pin = CANx_TX_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Alternate =  CANx_TX_AF;
-  
+
   HAL_GPIO_Init(CANx_TX_GPIO_PORT, &GPIO_InitStruct);
-  
+
   /* CAN1 RX GPIO pin configuration */
   GPIO_InitStruct.Pin = CANx_RX_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Alternate =  CANx_RX_AF;
-  
-  HAL_GPIO_Init(CANx_TX_GPIO_PORT, &GPIO_InitStruct);
-  
+
+  HAL_GPIO_Init(CANx_RX_GPIO_PORT, &GPIO_InitStruct);
+
   /*##-3- Configure the NVIC #################################################*/
   /* NVIC configuration for CAN1 Reception complete interrupt */
   HAL_NVIC_SetPriority(CANx_RX_IRQn, 1, 0);
@@ -100,7 +100,7 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef* hcan)
 }
 
 /**
-  * @brief CAN MSP De-Initialization 
+  * @brief CAN MSP De-Initialization
   *        This function frees the hardware resources used in this example:
   *          - Disable the Peripheral's clock
   *          - Revert GPIO to their default state
@@ -118,7 +118,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef *hcan)
   HAL_GPIO_DeInit(CANx_TX_GPIO_PORT, CANx_TX_PIN);
   /* De-initialize the CAN1 RX GPIO pin */
   HAL_GPIO_DeInit(CANx_RX_GPIO_PORT, CANx_RX_PIN);
-  
+
   /*##-4- Disable the NVIC for CAN reception #################################*/
   HAL_NVIC_DisableIRQ(CANx_RX_IRQn);
 }

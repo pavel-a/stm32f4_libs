@@ -50,6 +50,25 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+/* use the default SD timout as defined in the platform BSP driver*/
+#if defined(SDMMC_DATATIMEOUT)
+#define SD_TIMEOUT SDMMC_DATATIMEOUT
+#elif defined(SD_DATATIMEOUT)
+#define SD_TIMEOUT SD_DATATIMEOUT
+#else
+#define SD_TIMEOUT 30 * 1000
+#endif
+
+#define SD_DEFAULT_BLOCK_SIZE 512
+
+/*
+ * Depending on the usecase, the SD card initialization could be done at the
+ * application level, if it is the case define the flag below to disable
+ * the BSP_SD_Init() call in the SD_Initialize().
+ */
+
+/* #define DISABLE_SD_INIT */
+
 /* Private variables ---------------------------------------------------------*/
 /* Disk status */
 static volatile DSTATUS Stat = STA_NOINIT;
@@ -101,12 +120,16 @@ static DSTATUS SD_CheckStatus(BYTE lun)
 DSTATUS SD_initialize(BYTE lun)
 {
   Stat = STA_NOINIT;
+#if !defined(DISABLE_SD_INIT)
 
   if(BSP_SD_Init() == MSD_OK)
   {
     Stat = SD_CheckStatus(lun);
   }
 
+#else
+  Stat = SD_CheckStatus(lun);
+#endif
   return Stat;
 }
 
@@ -134,7 +157,7 @@ DRESULT SD_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
 
   if(BSP_SD_ReadBlocks((uint32_t*)buff,
                        (uint32_t) (sector),
-                       count, SDMMC_DATATIMEOUT) == MSD_OK)
+                       count, SD_TIMEOUT) == MSD_OK)
   {
     /* wait until the read operation is finished */
     while(BSP_SD_GetCardState()!= MSD_OK)
@@ -161,7 +184,7 @@ DRESULT SD_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 
   if(BSP_SD_WriteBlocks((uint32_t*)buff,
                         (uint32_t)(sector),
-                        count, SDMMC_DATATIMEOUT) == MSD_OK)
+                        count, SD_TIMEOUT) == MSD_OK)
   {
 	/* wait until the Write operation is finished */
     while(BSP_SD_GetCardState() != MSD_OK)
@@ -213,7 +236,7 @@ DRESULT SD_ioctl(BYTE lun, BYTE cmd, void *buff)
   /* Get erase block size in unit of sector (DWORD) */
   case GET_BLOCK_SIZE :
     BSP_SD_GetCardInfo(&CardInfo);
-    *(DWORD*)buff = CardInfo.LogBlockSize;
+    *(DWORD*)buff = CardInfo.LogBlockSize / SD_DEFAULT_BLOCK_SIZE;
 	res = RES_OK;
     break;
 

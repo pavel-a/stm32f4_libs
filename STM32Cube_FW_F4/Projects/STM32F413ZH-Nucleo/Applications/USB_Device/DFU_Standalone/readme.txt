@@ -47,8 +47,8 @@
 
 @par Application Description 
 
-This application is a part of the USB Device Library package using STM32Cube firmware. It describes how to 
-use USB device application based on the Device Firmware Upgrade (DFU) on the STM32F413xx devices.
+This application presents a compliant implementation of the Device Firmware Upgrade (DFU) 
+capability for programming the embedded flash memory through the USB peripheral on the STM32F413xx devices.
 
 This is a typical application on how to use the STM32F413xx USB OTG Device peripheral to implement the DFU
 capability for programming the embedded flash memory of the STM32F413xx devices.

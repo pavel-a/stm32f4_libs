@@ -50,6 +50,34 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+/*
+ * the following Timeout is useful to give the control back to the applications
+ * in case of errors in either BSP_SD_ReadCpltCallback() or BSP_SD_WriteCpltCallback()
+ * the value by default is as defined in the BSP platform driver otherwise 30 secs
+ */
+
+#define SD_TIMEOUT 30 * 1000
+
+#define SD_DEFAULT_BLOCK_SIZE 512
+
+/*
+ * Depending on the usecase, the SD card initialization could be done at the
+ * application level, if it is the case define the flag below to disable
+ * the BSP_SD_Init() call in the SD_Initialize().
+ */
+
+#define DISABLE_SD_INIT
+
+/*
+ * when using cachable memory region, it may be needed to maintain the cache
+ * validity. Enable the define below to activate a cache maintenance at each
+ * read and write operation.
+ * Notice: This is applicable only for cortex M7 based platform.
+ */
+
+/* #define ENABLE_SD_DMA_CACHE_MAINTENANCE  1 */
+
+
 /* Private variables ---------------------------------------------------------*/
 /* Disk status */
 static volatile DSTATUS Stat = STA_NOINIT;
@@ -100,7 +128,17 @@ static DSTATUS SD_CheckStatus(BYTE lun)
   */
 DSTATUS SD_initialize(BYTE lun)
 {
-  return SD_CheckStatus(lun);
+#if !defined(DISABLE_SD_INIT)
+
+  if(BSP_SD_Init() == MSD_OK)
+  {
+    Stat = SD_CheckStatus(lun);
+  }
+
+#else
+  Stat = SD_CheckStatus(lun);
+#endif
+  return Stat;
 }
 
 /**
@@ -125,22 +163,47 @@ DRESULT SD_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
 {
   DRESULT res = RES_ERROR;
   ReadStatus = 0;
+  uint32_t timeout;
+#if (ENABLE_SD_DMA_CACHE_MAINTENANCE == 1)
+  uint32_t alignedAddr;
+#endif
 
   if(BSP_SD_ReadBlocks_DMA((uint32_t*)buff,
                            (uint32_t) (sector),
                            count) == MSD_OK)
   {
-    /* Wait for the reading process is completed */
-    while(ReadStatus == 0)
+    /* Wait that the reading process is completed or a timeout occurs */
+    timeout = HAL_GetTick();
+    while((ReadStatus == 0) && ((HAL_GetTick() - timeout) < SD_TIMEOUT))
     {
     }
-    ReadStatus = 0;
-
-    while(BSP_SD_GetCardState())
+    /* incase of a timeout return error */
+    if (ReadStatus == 0)
     {
+      res = RES_ERROR;
     }
+    else
+    {
+      ReadStatus = 0;
+      timeout = HAL_GetTick();
 
-    res = RES_OK;
+      while((HAL_GetTick() - timeout) < SD_TIMEOUT)
+      {
+        if (BSP_SD_GetCardState() == SD_TRANSFER_OK)
+        {
+          res = RES_OK;
+#if (ENABLE_SD_DMA_CACHE_MAINTENANCE == 1)
+            /*
+               the SCB_InvalidateDCache_by_Addr() requires a 32-Byte aligned address,
+               adjust the address and the D-Cache size to invalidate accordingly.
+             */
+            alignedAddr = (uint32_t)buff & ~0x1F;
+            SCB_InvalidateDCache_by_Addr((uint32_t*)alignedAddr, count*BLOCKSIZE + ((uint32_t)buff - alignedAddr));
+#endif
+           break;
+        }
+      }
+    }
   }
 
   return res;
@@ -159,22 +222,48 @@ DRESULT SD_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 {
   DRESULT res = RES_ERROR;
   WriteStatus = 0;
+  uint32_t timeout;
+
+#if (ENABLE_SD_DMA_CACHE_MAINTENANCE == 1)
+  uint32_t alignedAddr;
+  /*
+   the SCB_CleanDCache_by_Addr() requires a 32-Byte aligned address
+   adjust the address and the D-Cache size to clean accordingly.
+   */
+  alignedAddr = (uint32_t)buff &  ~0x1F;
+  SCB_CleanDCache_by_Addr((uint32_t*)alignedAddr, count*BLOCKSIZE + ((uint32_t)buff - alignedAddr));
+#endif
+
 
   if(BSP_SD_WriteBlocks_DMA((uint32_t*)buff,
                             (uint32_t)(sector),
                             count) == MSD_OK)
   {
-    /* Wait for the writing process is completed */
-    while(WriteStatus == 0)
+    /* Wait that writing process is completed or a timeout occurs */
+
+    timeout = HAL_GetTick();
+    while((WriteStatus == 0) && ((HAL_GetTick() - timeout) < SD_TIMEOUT))
     {
     }
-    WriteStatus = 0;
-
-    while(BSP_SD_GetCardState())
+    /* incase of a timeout return error */
+    if (WriteStatus == 0)
     {
+      res = RES_ERROR;
     }
+    else
+    {
+      WriteStatus = 0;
+      timeout = HAL_GetTick();
 
-    res = RES_OK;
+      while((HAL_GetTick() - timeout) < SD_TIMEOUT)
+      {
+        if (BSP_SD_GetCardState() == SD_TRANSFER_OK)
+        {
+          res = RES_OK;
+          break;
+        }
+      }
+    }
   }
 
   return res;
@@ -220,7 +309,7 @@ DRESULT SD_ioctl(BYTE lun, BYTE cmd, void *buff)
   /* Get erase block size in unit of sector (DWORD) */
   case GET_BLOCK_SIZE :
     BSP_SD_GetCardInfo(&CardInfo);
-    *(DWORD*)buff = CardInfo.LogBlockSize;
+    *(DWORD*)buff = CardInfo.LogBlockSize / SD_DEFAULT_BLOCK_SIZE;
 	res = RES_OK;
     break;
 
@@ -240,7 +329,7 @@ DRESULT SD_ioctl(BYTE lun, BYTE cmd, void *buff)
   * @retval None
   */
 
-void BSP_SD_WriteCpltCallback()
+void BSP_SD_WriteCpltCallback(void)
 {
   WriteStatus = 1;
 }
@@ -251,7 +340,7 @@ void BSP_SD_WriteCpltCallback()
   * @retval None
   */
 
-void BSP_SD_ReadCpltCallback()
+void BSP_SD_ReadCpltCallback(void)
 {
   ReadStatus = 1;
 }

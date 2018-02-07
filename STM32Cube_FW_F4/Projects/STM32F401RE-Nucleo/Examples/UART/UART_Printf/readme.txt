@@ -35,9 +35,8 @@
 
 @par Example Description                  
 
-
-This example shows how to reroute the C library printf function to the UART. It 
-outputs a message sent by the UART on the HyperTerminal.
+This example shows how to re-route the C library printf function to the UART.
+The UART outputs a message on the HyperTerminal.
 
 The STM32 Nucleo boards integrate the ST-LINK/V2.1 interfacing with the PC and 
 offering the following capabilities:

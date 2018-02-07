@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example describes how to configure and use GPIOs through the HAL API. 
+How to configure and use GPIOs through the HAL API.
 
 PB.00, PB.07 and PB.14 IOs (configured in output pushpull mode) toggle in a forever loop.
 On NUCLEO-F412ZG Rev B board these IOs are connected to LED1, LED2 and LED3.

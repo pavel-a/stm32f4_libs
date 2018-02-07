@@ -35,8 +35,8 @@
 
 @par Example Description 
 
-This example provides a short description of how to use the ADC peripheral to
-convert a regular channel in Triple interleaved mode.
+How to use the ADC peripheral to convert a regular channel in Triple 
+interleaved mode.
 
 This example provides a short description of how to use the ADC peripheral to 
 convert a regular channel in Triple interleaved mode using DMA in mode 2 with 

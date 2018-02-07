@@ -35,7 +35,9 @@
 
 @par Example Description
 
-This example describes how to execute a part of the code from the QSPI memory. To do this, 
+How to configure the QSPI IP in order to have access to external memory just after reset.
+
+This example describes how to execute a part of the code from a QSPI memory. To do this, 
 a section is created where the function is stored.
 
 The QSPI is configured in memory-mapped mode before to call main() function and QSPI memory 

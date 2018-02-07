@@ -48,7 +48,7 @@
 
 @par Application Description
 
-This application shows how to use semaphore from ISR with CMSIS RTOS API .
+How to use semaphore from ISR with CMSIS RTOS API.
 
 This example creates a thread that toggle a LED through semaphore given from ISR.
  
