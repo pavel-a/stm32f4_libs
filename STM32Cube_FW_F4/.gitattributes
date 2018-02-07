@@ -20,8 +20,10 @@
 *.uvprojx text eol=crlf
 *.uvoptx text eol=crlf
 
+*.lib binary
 *.pdf binary
 *.jpg binary
+*.chm binary
 *.txt text eol=crlf
 *.js text eol=lf
 *.html text eol=lf
