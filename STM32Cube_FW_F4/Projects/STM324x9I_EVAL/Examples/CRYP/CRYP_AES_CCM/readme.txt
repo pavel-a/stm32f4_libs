@@ -37,6 +37,7 @@
 
 This example provides a short description of how to use the CRYPTO peripheral to
 encrypt data using AES with Combined Cipher Machine (CCM).
+
 The AES-CCM mode requires:
 1. Plain text which will be authenticated and encrypted. Its size must be a multiple
    of 16 bytes. So if the original plain text size is not a multiple of 16 bytes

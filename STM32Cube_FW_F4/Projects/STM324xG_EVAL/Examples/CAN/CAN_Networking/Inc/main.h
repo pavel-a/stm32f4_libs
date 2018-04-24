@@ -1,12 +1,12 @@
 /**
   ******************************************************************************
-  * @file    CAN/CAN_Networking/Inc/main.h 
+  * @file    CAN/CAN_Networking/Inc/main.h
   * @author  MCD Application Team
   * @brief   Header for main.c module
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>>
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -43,7 +43,7 @@
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-/* User can use this section to tailor CANx instance used and associated 
+/* User can use this section to tailor CANx instance used and associated
    resources */
 /* Definition for CANx clock resources */
 #define CANx                            CAN1
@@ -61,7 +61,7 @@
 #define CANx_RX_GPIO_PORT              GPIOD
 #define CANx_RX_AF                     GPIO_AF9_CAN1
 
-/* Definition for USARTx's NVIC */
+/* Definition for CAN's NVIC */
 #define CANx_RX_IRQn                   CAN1_RX0_IRQn
 #define CANx_RX_IRQHandler             CAN1_RX0_IRQHandler
 

@@ -35,7 +35,6 @@
 
 @par Example Description 
 
-
 This example shows how to perform SPI data buffer transmission/reception between 
 two boards via DMA.
 

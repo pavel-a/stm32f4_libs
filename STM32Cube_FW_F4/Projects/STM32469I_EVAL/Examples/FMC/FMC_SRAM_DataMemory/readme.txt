@@ -35,7 +35,7 @@
 
 @par Example Description
 
-This example guides you through the differentconfiguration steps by mean of HAL API
+This example guides you through the different configuration steps by mean of HAL API
 to configure the FMC controller to access the SRAM mountedon evaluation
 board (including heap and stack).
  

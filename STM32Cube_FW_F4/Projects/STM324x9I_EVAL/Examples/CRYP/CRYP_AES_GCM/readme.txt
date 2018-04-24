@@ -37,6 +37,7 @@
 
 This example provides a description of how to use the CRYPTO peripheral to
 encrypt and decrypt data using AES with Galois/Counter Mode (GCM).
+
 The AES-GCM mode requires:
 1. Plain text which will be authenticated and encrypted. Its size must be a
    multiple of 16 bytes. So if the original plain text size is not a multiple

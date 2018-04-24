@@ -34,6 +34,7 @@
   @endverbatim
 
 @par Example Description 
+
 This example shows how to ensure SPI data buffer transmission/reception 
 between two boards by using an interrupt.
 

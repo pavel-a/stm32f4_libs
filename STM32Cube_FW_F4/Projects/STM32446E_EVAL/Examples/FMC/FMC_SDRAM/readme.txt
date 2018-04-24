@@ -35,7 +35,6 @@
 
 @par Example Description
 
-
 This example describes how to configure the FMC controller to access the SDRAM 
 memory.
 

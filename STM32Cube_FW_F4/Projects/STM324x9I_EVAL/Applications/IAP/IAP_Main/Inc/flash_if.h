@@ -100,7 +100,7 @@ enum{
 
 /* Define the address from where user application will be loaded.
    Note: the 1st sector 0x08000000-0x08003FFF is reserved for the IAP code */
-#define APPLICATION_ADDRESS   (uint32_t)0x08004000 
+#define APPLICATION_ADDRESS   (uint32_t)0x08008000 
 
 /* Define bitmap representing user flash area that could be write protected (check restricted to pages 8-39). */
 #define FLASH_SECTOR_TO_BE_PROTECTED (OB_WRP_SECTOR_0 | OB_WRP_SECTOR_1 | OB_WRP_SECTOR_2 | OB_WRP_SECTOR_3 |\

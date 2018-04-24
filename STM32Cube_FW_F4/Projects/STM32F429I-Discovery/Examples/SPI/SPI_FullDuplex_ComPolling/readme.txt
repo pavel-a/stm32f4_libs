@@ -35,7 +35,6 @@
 
 @par Example Description 
 
-
 This example shows how to ensure SPI data buffer transmission/reception in Polling 
 mode between two boards.
 

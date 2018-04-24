@@ -35,7 +35,6 @@
 
 @par Example Description 
 
-
 This example describes an UART transmission (transmit/receive) in interrupt mode
 between two boards.
 

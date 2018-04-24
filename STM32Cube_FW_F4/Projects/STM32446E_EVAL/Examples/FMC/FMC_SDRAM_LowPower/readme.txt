@@ -35,7 +35,6 @@
 
 @par Example Description
 
-
 This example describes how to configure the FMC controller to access the SDRAM 
 memory in low power mode (SDRAM Self Refresh mode).
 

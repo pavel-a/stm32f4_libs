@@ -35,7 +35,6 @@
 
 @par Example Description 
 
-
 This example describes an UART transmission (transmit/receive) between a board and 
 an Hyperterminal PC application by using an interrupt.
 

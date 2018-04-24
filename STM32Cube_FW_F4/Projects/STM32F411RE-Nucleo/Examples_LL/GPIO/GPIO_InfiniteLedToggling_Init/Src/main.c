@@ -47,6 +47,8 @@
   */
 
 /* Private typedef -----------------------------------------------------------*/
+LL_GPIO_InitTypeDef gpio_initstruct;
+
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -93,13 +95,20 @@ void Configure_GPIO(void)
   LED2_GPIO_CLK_ENABLE();
 
   /* Configure IO in output push-pull mode to drive external LED2 */
-  LL_GPIO_SetPinMode(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_MODE_OUTPUT);
-  /* Reset value is LL_GPIO_OUTPUT_PUSHPULL */
-  //LL_GPIO_SetPinOutputType(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_OUTPUT_PUSHPULL);
-  /* Reset value is LL_GPIO_SPEED_FREQ_LOW */
-  //LL_GPIO_SetPinSpeed(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_SPEED_FREQ_LOW);
-  /* Reset value is LL_GPIO_PULL_NO */
-  //LL_GPIO_SetPinPull(LED2_GPIO_PORT, LED2_PIN, LL_GPIO_PULL_NO);
+  gpio_initstruct.Pin        = LED2_PIN;
+  gpio_initstruct.Mode       = LL_GPIO_MODE_OUTPUT;
+  gpio_initstruct.Speed      = LL_GPIO_SPEED_FREQ_LOW;
+  gpio_initstruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  gpio_initstruct.Pull       = LL_GPIO_PULL_NO;
+
+  /* Initialize LED2_GPIO_PORT port according to parameters defined in initialization structure. */
+  if (LL_GPIO_Init(LED2_GPIO_PORT, &gpio_initstruct) != SUCCESS)
+  {
+    /* Initialization Error */
+    while (1)
+    {
+    }
+  }
 }
 
 /**

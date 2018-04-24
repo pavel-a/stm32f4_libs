@@ -41,6 +41,7 @@
 This example provides a description of how to use the embedded LCD DSI controller 
 (using IPs LTDC and DSI Host) to drive the KoD LCD mounted on board and manage entry and exit in 
 DSI ULPM mode on data lane and clock lane. 
+
 In this mode, the DSI PHY state machine is entering a low power state
 on data lane and clock lane.
 The DSI Dphy_Clk should be derived from the clock tree PLL.PLLR (ck_plldsi) with a 60 MHz clock for instance

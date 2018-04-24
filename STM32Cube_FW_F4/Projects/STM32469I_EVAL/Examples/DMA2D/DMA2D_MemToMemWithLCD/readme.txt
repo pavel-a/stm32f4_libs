@@ -40,6 +40,7 @@
 
   This example provides a description of how to configure DMA2D peripheral in 
   Memory_to_Memory transfer mode and display the result on LCD.
+  
   The source buffer in format ARGB4444 and size 150x150 located in Flash is copied in Memory to Memory mode 
   by the DMA2D in SRAM Destination buffer of same size and format.
   This SRAM buffer is then displayed by the LTDC centered on LCD screen.

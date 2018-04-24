@@ -37,6 +37,7 @@
 
 This example provides a description of how to use the DAC peripheral to 
 generate several signals using DMA controller.
+
 For each press on User push-button, 
 A signal has been selected and can be monitored on  
 the DAC channel one:
