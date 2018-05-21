@@ -1,0 +1,77 @@
+From be57419b25876bc7236a5e028bf84898f0ff3007 Mon Sep 17 00:00:00 2001
+From: pavel_a <pavel_a>
+Date: Mon, 21 May 2018 20:49:33 +0300
+Subject: [PATCH] Proposed USBH patch from ST, see:
+ https://community.st.com/message/198331-re-usb-host?commentID=198331&et=watches.email.thread#comment-198331
+
+ - usbh_ctrlreq.c
+ - Class/HID/src/usbh_hid.c
+---
+ .../Class/HID/Src/usbh_hid.c                       | 25 ++++++++++++++++------
+ .../STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c  |  6 ++++++
+ 2 files changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Class/HID/Src/usbh_hid.c b/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Class/HID/Src/usbh_hid.c
+index 1d9e7762..cef4acf5 100644
+--- a/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Class/HID/Src/usbh_hid.c
++++ b/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Class/HID/Src/usbh_hid.c
+@@ -363,20 +363,33 @@ static USBH_StatusTypeDef USBH_HID_Process(USBH_HandleTypeDef *phost)
+   {
+   case HID_INIT:
+     HID_Handle->Init(phost); 
++    /* FALL THRU */
+   case HID_IDLE:
+-    if(USBH_HID_GetReport (phost,
+-                           0x01,
+-                            0,
+-                            HID_Handle->pData,
+-                            HID_Handle->length) == USBH_OK)
++    status = USBH_HID_GetReport (phost, 0x01U, 0U, HID_Handle->pData, HID_Handle->length);
++    if (status == USBH_OK)
+     {
+       
+       fifo_write(&HID_Handle->fifo, HID_Handle->pData, HID_Handle->length);  
+       HID_Handle->state = HID_SYNC;
+     }
++    else if (status == USBH_BUSY)
++    {
++      HID_Handle->state = HID_IDLE;
++      status = USBH_OK;
++    }
++    else if (status == USBH_NOT_SUPPORTED)
++    {
++      HID_Handle->state = HID_SYNC;
++      status = USBH_OK;
++    }
++    else
++    {
++      HID_Handle->state = HID_ERROR;
++      status = USBH_FAIL;
++    }
+     
+     break;
+-    
++
+   case HID_SYNC:
+ 
+     /* Sync with start of Even Frame */
+diff --git a/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c b/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c
+index c915caf5..9ef954ba 100644
+--- a/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c
++++ b/STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c
+@@ -558,6 +558,12 @@ USBH_StatusTypeDef USBH_CtlReq     (USBH_HandleTypeDef *phost,
+       phost->Control.state =CTRL_IDLE;  
+       status = USBH_OK;      
+     }
++    else if (status == USBH_NOT_SUPPORTED)
++    {
++      phost->RequestState = CMD_SEND;
++      phost->Control.state = CTRL_IDLE;  
++      status = USBH_NOT_SUPPORTED;
++    }
+     else if  (status == USBH_FAIL)
+     {
+       /* Failure Mode */
+-- 
+2.16.1.windows.1
+
