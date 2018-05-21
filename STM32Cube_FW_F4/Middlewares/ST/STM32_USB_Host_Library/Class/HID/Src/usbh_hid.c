@@ -363,20 +363,33 @@ static USBH_StatusTypeDef USBH_HID_Process(USBH_HandleTypeDef *phost)
   {
   case HID_INIT:
     HID_Handle->Init(phost); 
+    /* FALL THRU */
   case HID_IDLE:
-    if(USBH_HID_GetReport (phost,
-                           0x01,
-                            0,
-                            HID_Handle->pData,
-                            HID_Handle->length) == USBH_OK)
+    status = USBH_HID_GetReport (phost, 0x01U, 0U, HID_Handle->pData, HID_Handle->length);
+    if (status == USBH_OK)
     {
       
       fifo_write(&HID_Handle->fifo, HID_Handle->pData, HID_Handle->length);  
       HID_Handle->state = HID_SYNC;
     }
+    else if (status == USBH_BUSY)
+    {
+      HID_Handle->state = HID_IDLE;
+      status = USBH_OK;
+    }
+    else if (status == USBH_NOT_SUPPORTED)
+    {
+      HID_Handle->state = HID_SYNC;
+      status = USBH_OK;
+    }
+    else
+    {
+      HID_Handle->state = HID_ERROR;
+      status = USBH_FAIL;
+    }
     
     break;
-    
+
   case HID_SYNC:
 
     /* Sync with start of Even Frame */
