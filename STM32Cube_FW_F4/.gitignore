@@ -1,3 +1,7 @@
 #
 Utilities/Media/*
 Utilities/PC_Software/*
+# TouchGFX too big for github, not tracking.
+Middlewares/ST/TouchGFX
+# Too big
+Middlewares/ST/STemWin
