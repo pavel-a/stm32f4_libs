@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : LISTWHEEL.h
 Purpose     : LISTWHEEL widget include
 --------------------END-OF-HEADER-------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef LISTWHEEL_H
 #define LISTWHEEL_H
 
@@ -116,6 +111,7 @@ void LISTWHEEL_Callback(WM_MESSAGE * pMsg);
 **********************************************************************
 */
 void      LISTWHEEL_AddString      (LISTWHEEL_Handle hObj, const char * s);
+GUI_COLOR LISTWHEEL_GetBkColor     (LISTWHEEL_Handle hObj, unsigned int Index);
 void *    LISTWHEEL_GetItemData    (LISTWHEEL_Handle hObj, unsigned Index); /* not to be documented */
 void      LISTWHEEL_GetItemText    (LISTWHEEL_Handle hObj, unsigned Index, char * pBuffer, int MaxSize);
 int       LISTWHEEL_GetItemFromPos (LISTWHEEL_Handle hObj, int yPos);
@@ -127,6 +123,7 @@ int       LISTWHEEL_GetRBorder     (LISTWHEEL_Handle hObj);
 int       LISTWHEEL_GetSel         (LISTWHEEL_Handle hObj);
 int       LISTWHEEL_GetSnapPosition(LISTWHEEL_Handle hObj);
 int       LISTWHEEL_GetTextAlign   (LISTWHEEL_Handle hObj);
+GUI_COLOR LISTWHEEL_GetTextColor   (LISTWHEEL_Handle hObj, unsigned int Index);
 int       LISTWHEEL_GetUserData    (LISTWHEEL_Handle hObj, void * pDest, int NumBytes);
 int       LISTWHEEL_IsMoving       (LISTWHEEL_Handle hObj);
 void      LISTWHEEL_MoveToPos      (LISTWHEEL_Handle hObj, unsigned int Index);

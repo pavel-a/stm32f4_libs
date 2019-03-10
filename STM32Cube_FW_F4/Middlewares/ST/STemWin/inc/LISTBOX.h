@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : LISTBOX.h
 Purpose     : LISTBOX widget include
 --------------------END-OF-HEADER-------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef LISTBOX_H
 #define LISTBOX_H
 
@@ -146,49 +141,51 @@ void LISTBOX_Callback(WM_MESSAGE * pMsg);
 **********************************************************************
 */
 
-int          LISTBOX_AddKey          (LISTBOX_Handle hObj, int Key);
-void         LISTBOX_AddString       (LISTBOX_Handle hObj, const char * s);
-void         LISTBOX_AddStringH      (LISTBOX_Handle hObj, WM_HMEM hString); /* Not to be documented!!! */
-void         LISTBOX_DecSel          (LISTBOX_Handle hObj);
-void         LISTBOX_DeleteItem      (LISTBOX_Handle hObj, unsigned int Index);
-void         LISTBOX_EnableFixedScrollMode(LISTBOX_Handle hObj, unsigned int OnOff, U8 FixedPos);
-void         LISTBOX_EnableWrapMode  (LISTBOX_Handle hObj, int OnOff);
-unsigned     LISTBOX_GetItemSpacing  (LISTBOX_Handle hObj);
-unsigned     LISTBOX_GetNumItems     (LISTBOX_Handle hObj);
-int          LISTBOX_GetSel          (LISTBOX_Handle hObj);
-const GUI_FONT * LISTBOX_GetFont     (LISTBOX_Handle hObj);
-int          LISTBOX_GetItemDisabled (LISTBOX_Handle hObj, unsigned Index);
-int          LISTBOX_GetItemSel      (LISTBOX_Handle hObj, unsigned Index);
-void         LISTBOX_GetItemText     (LISTBOX_Handle hObj, unsigned Index, char * pBuffer, int MaxSize);
-int          LISTBOX_GetMulti        (LISTBOX_Handle hObj);
-WM_HWIN      LISTBOX_GetOwner        (LISTBOX_Handle hObj);
-int          LISTBOX_GetScrollStepH  (LISTBOX_Handle hObj);
-int          LISTBOX_GetTextAlign    (LISTBOX_Handle hObj);
-int          LISTBOX_GetUserData     (LISTBOX_Handle hObj, void * pDest, int NumBytes);
-void         LISTBOX_IncSel          (LISTBOX_Handle hObj);
-void         LISTBOX_InsertString    (LISTBOX_Handle hObj, const char * s, unsigned int Index);
-void         LISTBOX_InvalidateItem  (LISTBOX_Handle hObj, int Index);
-int          LISTBOX_OwnerDraw       (const WIDGET_ITEM_DRAW_INFO * pDrawItemInfo);
-void         LISTBOX_SetAutoScrollH  (LISTBOX_Handle hObj, int OnOff);
-void         LISTBOX_SetAutoScrollV  (LISTBOX_Handle hObj, int OnOff);
-void         LISTBOX_SetBkColor      (LISTBOX_Handle hObj, unsigned int Index, GUI_COLOR color);
-void         LISTBOX_SetFont         (LISTBOX_Handle hObj, const GUI_FONT * pFont);
-void         LISTBOX_SetItemDisabled (LISTBOX_Handle hObj, unsigned Index, int OnOff);
-void         LISTBOX_SetItemSel      (LISTBOX_Handle hObj, unsigned Index, int OnOff);
-void         LISTBOX_SetItemSpacing  (LISTBOX_Handle hObj, unsigned Value);
-void         LISTBOX_SetMulti        (LISTBOX_Handle hObj, int Mode);
-void         LISTBOX_SetOwner        (LISTBOX_Handle hObj, WM_HWIN hOwner);
-void         LISTBOX_SetOwnerDraw    (LISTBOX_Handle hObj, WIDGET_DRAW_ITEM_FUNC * pfDrawItem);
-void         LISTBOX_SetScrollStepH  (LISTBOX_Handle hObj, int Value);
-void         LISTBOX_SetSel          (LISTBOX_Handle hObj, int Sel);
-void         LISTBOX_SetScrollbarColor(LISTBOX_Handle hObj, unsigned Index, GUI_COLOR Color);
-void         LISTBOX_SetScrollbarWidth(LISTBOX_Handle hObj, unsigned Width);
-void         LISTBOX_SetString       (LISTBOX_Handle hObj, const char * s, unsigned int Index);
-void         LISTBOX_SetText         (LISTBOX_Handle hObj, const GUI_ConstString * ppText);
-void         LISTBOX_SetTextAlign    (LISTBOX_Handle hObj, int Align);
-GUI_COLOR    LISTBOX_SetTextColor    (LISTBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
-int          LISTBOX_SetUserData     (LISTBOX_Handle hObj, const void * pSrc, int NumBytes);
-int          LISTBOX_UpdateScrollers (LISTBOX_Handle hObj);
+int              LISTBOX_AddKey          (LISTBOX_Handle hObj, int Key);
+void             LISTBOX_AddString       (LISTBOX_Handle hObj, const char * s);
+void             LISTBOX_AddStringH      (LISTBOX_Handle hObj, WM_HMEM hString); /* Not to be documented!!! */
+void             LISTBOX_DecSel          (LISTBOX_Handle hObj);
+void             LISTBOX_DeleteItem      (LISTBOX_Handle hObj, unsigned int Index);
+void             LISTBOX_EnableFixedScrollMode(LISTBOX_Handle hObj, unsigned int OnOff, U8 FixedPos);
+void             LISTBOX_EnableWrapMode  (LISTBOX_Handle hObj, int OnOff);
+GUI_COLOR        LISTBOX_GetBkColor      (LISTBOX_Handle hObj, unsigned int Index);
+const GUI_FONT * LISTBOX_GetFont         (LISTBOX_Handle hObj);
+unsigned         LISTBOX_GetItemSpacing  (LISTBOX_Handle hObj);
+unsigned         LISTBOX_GetNumItems     (LISTBOX_Handle hObj);
+int              LISTBOX_GetSel          (LISTBOX_Handle hObj);
+GUI_COLOR        LISTBOX_GetTextColor    (LISTBOX_Handle hObj, unsigned int Index);
+int              LISTBOX_GetItemDisabled (LISTBOX_Handle hObj, unsigned Index);
+int              LISTBOX_GetItemSel      (LISTBOX_Handle hObj, unsigned Index);
+void             LISTBOX_GetItemText     (LISTBOX_Handle hObj, unsigned Index, char * pBuffer, int MaxSize);
+int              LISTBOX_GetMulti        (LISTBOX_Handle hObj);
+WM_HWIN          LISTBOX_GetOwner        (LISTBOX_Handle hObj);
+int              LISTBOX_GetScrollStepH  (LISTBOX_Handle hObj);
+int              LISTBOX_GetTextAlign    (LISTBOX_Handle hObj);
+int              LISTBOX_GetUserData     (LISTBOX_Handle hObj, void * pDest, int NumBytes);
+void             LISTBOX_IncSel          (LISTBOX_Handle hObj);
+void             LISTBOX_InsertString    (LISTBOX_Handle hObj, const char * s, unsigned int Index);
+void             LISTBOX_InvalidateItem  (LISTBOX_Handle hObj, int Index);
+int              LISTBOX_OwnerDraw       (const WIDGET_ITEM_DRAW_INFO * pDrawItemInfo);
+void             LISTBOX_SetAutoScrollH  (LISTBOX_Handle hObj, int OnOff);
+void             LISTBOX_SetAutoScrollV  (LISTBOX_Handle hObj, int OnOff);
+void             LISTBOX_SetBkColor      (LISTBOX_Handle hObj, unsigned int Index, GUI_COLOR color);
+void             LISTBOX_SetFont         (LISTBOX_Handle hObj, const GUI_FONT * pFont);
+void             LISTBOX_SetItemDisabled (LISTBOX_Handle hObj, unsigned Index, int OnOff);
+void             LISTBOX_SetItemSel      (LISTBOX_Handle hObj, unsigned Index, int OnOff);
+void             LISTBOX_SetItemSpacing  (LISTBOX_Handle hObj, unsigned Value);
+void             LISTBOX_SetMulti        (LISTBOX_Handle hObj, int Mode);
+void             LISTBOX_SetOwner        (LISTBOX_Handle hObj, WM_HWIN hOwner);
+void             LISTBOX_SetOwnerDraw    (LISTBOX_Handle hObj, WIDGET_DRAW_ITEM_FUNC * pfDrawItem);
+void             LISTBOX_SetScrollStepH  (LISTBOX_Handle hObj, int Value);
+void             LISTBOX_SetSel          (LISTBOX_Handle hObj, int Sel);
+void             LISTBOX_SetScrollbarColor(LISTBOX_Handle hObj, unsigned Index, GUI_COLOR Color);
+void             LISTBOX_SetScrollbarWidth(LISTBOX_Handle hObj, unsigned Width);
+void             LISTBOX_SetString       (LISTBOX_Handle hObj, const char * s, unsigned int Index);
+void             LISTBOX_SetText         (LISTBOX_Handle hObj, const GUI_ConstString * ppText);
+void             LISTBOX_SetTextAlign    (LISTBOX_Handle hObj, int Align);
+GUI_COLOR        LISTBOX_SetTextColor    (LISTBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
+int              LISTBOX_SetUserData     (LISTBOX_Handle hObj, const void * pSrc, int NumBytes);
+int              LISTBOX_UpdateScrollers (LISTBOX_Handle hObj);
 
 /*********************************************************************
 *

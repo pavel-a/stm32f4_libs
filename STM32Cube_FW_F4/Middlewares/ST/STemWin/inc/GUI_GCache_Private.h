@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,19 +26,19 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
-Licensing information
-Licensor:                 SEGGER Software GmbH
-Licensed to:              STMicroelectronics International NV, 39, Chemin du Champ-des Filles, 1228 Plan Les Ouates, Geneva, SWITZERLAND
-Licensed SEGGER software: emWin
-License number:           GUI-00429
-License model:            Buyout SRC [Buyout Source Code License, signed November 29th 2012]
-Licensed product:         -
-Licensed platform:        STMs ARM Cortex-M based 32 BIT CPUs
-Licensed number of seats: -
-----------------------------------------------------------------------
-Support and Update Agreement (SUA)
-SUA period:               2012-12-07 - 2017-12-31
-Contact to extend SUA:    sales@segger.com
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
 ----------------------------------------------------------------------
 File        : GUI_GCache_Private.h
 Purpose     : Private header
@@ -86,19 +86,19 @@ typedef struct {
   //
   // Cache management
   //
-  void (* pfReadRect)     (GUI_DEVICE * pDevice, int x0, int y0, int x1, int y1, LCD_PIXELINDEX * pBuffer);
+  void (* pfReadRect)     (GUI_DEVICE * pDevice, int _x0, int _y0, int _x1, int _y1, LCD_PIXELINDEX * pBuffer);
   void (* pfSendCacheRect)(GUI_DEVICE * pDevice);
   U32 * pVMEM;
   //
   // Drawing functions
   //
-  void           (* pfDrawBitmap   )(GUI_DEVICE *  pDevice,  int x0, int y0, int xsize, int ysize, int BitsPerPixel, int BytesPerLine, const U8 * pData, int Diff, const LCD_PIXELINDEX * pTrans);
-  void           (* pfDrawHLine    )(GUI_DEVICE *  pDevice,  int x0, int y0,  int x1);
-  void           (* pfDrawVLine    )(GUI_DEVICE *  pDevice,  int x , int y0,  int y1);
-  void           (* pfFillRect     )(GUI_DEVICE *  pDevice,  int x0, int y0, int x1, int y1);
-  LCD_PIXELINDEX (* pfGetPixelIndex)(GUI_DEVICE *  pDevice,  int x, int y);
-  void           (* pfSetPixelIndex)(GUI_DEVICE *  pDevice,  int x, int y, LCD_PIXELINDEX ColorIndex);
-  void           (* pfXorPixel     )(GUI_DEVICE *  pDevice,  int x, int y);
+  void           (* pfDrawBitmap   )(GUI_DEVICE *  pDevice,  int _x0, int _y0, int xsize, int ysize, int _BitsPerPixel, int _BytesPerLine, const U8 * pData, int Diff, const LCD_PIXELINDEX * pTrans);
+  void           (* pfDrawHLine    )(GUI_DEVICE *  pDevice,  int _x0, int _y0, int _x1);
+  void           (* pfDrawVLine    )(GUI_DEVICE *  pDevice,  int _x , int _y0, int _y1);
+  void           (* pfFillRect     )(GUI_DEVICE *  pDevice,  int _x0, int _y0, int _x1, int _y1);
+  LCD_PIXELINDEX (* pfGetPixelIndex)(GUI_DEVICE *  pDevice,  int _x, int _y);
+  void           (* pfSetPixelIndex)(GUI_DEVICE *  pDevice,  int _x, int _y, LCD_PIXELINDEX ColorIndex);
+  void           (* pfXorPixel     )(GUI_DEVICE *  pDevice,  int _x, int _y);
   //
   // GetData function
   //

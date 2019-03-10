@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,32 +26,29 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : GUI.h
 Purpose     : GUI API include file
 ---------------------------END-OF-HEADER------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef  GUI_H
 #define  GUI_H
+
+#include <stddef.h>
 
 #include "GUI_ConfDefaults.h"
 #include "GUI_Type.h"
@@ -235,6 +232,7 @@ struct GUI_CONTEXT {
   U8         PenSize;
   U8         PenShape;
   U8         LineStyle;
+  U8         StrikeWidth;
   //
   // Variables in GUICHAR module
   //
@@ -274,6 +272,10 @@ struct GUI_CONTEXT {
   U8 AA_Factor;
   U8 AA_HiResEnable;
   void (* AA_pfSetPixelAA)(int x, int y, U8 Intens); // Function to be used for drawing a single pixel
+  //
+  // Used to reference and link in the copyright string for libraries.
+  //
+  const char * sCopyright;
 };
 
 /* Rename GUI_SaveContext in order to avoid crashes if wrong GUIConf is used */
@@ -356,29 +358,30 @@ int  GUI_SOFTLAYER_MULTIBUF_Enable  (int OnOff);
 *
 *       General routines
 */
-void             GUI_Exit             (void);
-GUI_COLOR        GUI_GetDefaultBkColor(void);
-GUI_COLOR        GUI_GetDefaultColor  (void);
-const GUI_FONT * GUI_GetDefaultFont   (void);
-int              GUI_GetScreenSizeX   (void);
-int              GUI_GetScreenSizeY   (void);
-const char *     GUI_GetVersionString (void);
-int              GUI_Init             (void);
-int              GUI_IsInitialized    (void);
-void             GUI_SetAfterInitHook (void (* pFunc)(void));
-void             GUI_RestoreContext   (const GUI_CONTEXT * pContext);
-void             GUI_SaveContext      (GUI_CONTEXT * pContext);
-const GUI_RECT * GUI_SetClipRect      (const GUI_RECT * pRect);
-void             GUI_SetControlHook   (void (* pFunc)(int LayerIndex, int Cmd));
-void             GUI_SetDefault       (void);
-void             GUI_SetDefaultBkColor(GUI_COLOR Color);
-void             GUI_SetDefaultColor  (GUI_COLOR Color);
-void             GUI_SetDefaultFont   (const GUI_FONT * pFont);
-GUI_DRAWMODE     GUI_SetDrawMode      (GUI_DRAWMODE dm);
-void             GUI_SetScreenSizeX   (int xSize);
-void             GUI_SetScreenSizeY   (int ySize);
-void             GUI_SetRefreshHook   (void (* pFunc)(void));
-void             MainTask             (void);
+void             GUI_Exit                 (void);
+GUI_COLOR        GUI_GetDefaultBkColor    (void);
+GUI_COLOR        GUI_GetDefaultColor      (void);
+const GUI_FONT * GUI_GetDefaultFont       (void);
+int              GUI_GetScreenSizeX       (void);
+int              GUI_GetScreenSizeY       (void);
+const char *     GUI_GetVersionString     (void);
+int              GUI_Init                 (void);
+int              GUI_IsInitialized        (void);
+void             GUI_SetAfterInitHook     (void (* pFunc)(void));
+void             GUI_RegisterAfterInitHook(void (* pFunc)(void), GUI_REGISTER_INIT * pRegisterInit);
+void             GUI_RestoreContext       (const GUI_CONTEXT * pContext);
+void             GUI_SaveContext          (GUI_CONTEXT * pContext);
+const GUI_RECT * GUI_SetClipRect          (const GUI_RECT * pRect);
+void             GUI_SetControlHook       (void (* pFunc)(int LayerIndex, int Cmd));
+void             GUI_SetDefault           (void);
+void             GUI_SetDefaultBkColor    (GUI_COLOR Color);
+void             GUI_SetDefaultColor      (GUI_COLOR Color);
+void             GUI_SetDefaultFont       (const GUI_FONT * pFont);
+GUI_DRAWMODE     GUI_SetDrawMode          (GUI_DRAWMODE dm);
+void             GUI_SetScreenSizeX       (int xSize);
+void             GUI_SetScreenSizeY       (int ySize);
+void             GUI_SetRefreshHook       (void (* pFunc)(void));
+void             MainTask                 (void);
 
 #define GUI_PID_SetInitFunc(x) GUI_SetAfterInitHook(x)  // Compatibility
 
@@ -386,13 +389,14 @@ void             MainTask             (void);
 *
 *       Function replacement
 */
-void GUI_SetpfMemset(void * (* pFunc)(void * pDest, int c, unsigned Cnt));
-void GUI_SetpfMemcpy(void * (* pFunc)(void * pDest, const void * pSrc, unsigned Cnt));
+void GUI_SetpfMemset(void * (* pFunc)(void * pDest, int c, size_t Cnt));
+void GUI_SetpfMemcpy(void * (* pFunc)(void * pDest, const void * pSrc, size_t Cnt));
 
 /*********************************************************************
 *
 *       Rectangle helper functions
 */
+void GUI_AddRect        (GUI_RECT * pDest, const GUI_RECT * pRect, int Dist);
 int  GUI_RectsIntersect(const GUI_RECT * pr0, const GUI_RECT * pr1);
 void GUI_MoveRect       (GUI_RECT * pRect, int x, int y);
 void GUI_MergeRect      (GUI_RECT * pDest, const GUI_RECT * pr0, const GUI_RECT * pr1);
@@ -422,13 +426,14 @@ void GUI__DrawTwinArc2(int xl, int xr, int y0,         int r, GUI_COLOR ColorR0,
 void GUI__DrawTwinArc4(int x0, int y0, int x1, int y1, int r, GUI_COLOR ColorR0, GUI_COLOR ColorR1, GUI_COLOR ColorFill);
 void GUI__FillTrippleArc(int x0, int y0, int Size, GUI_COLOR ColorR0, GUI_COLOR ColorR1, GUI_COLOR ColorR2, GUI_COLOR ColorFill);
 void GUI__RegisterExit(GUI_REGISTER_EXIT * pRegisterExit);
+void GUI__RegisterInit(GUI_REGISTER_INIT * pRegisterInit);
 
 /*********************************************************************
 *
 *       Optional function replacement
 */
-void * GUI__memcpy(void * pDest, const void * pSrc, unsigned NumBytes);
-void * GUI__memset(void * pDest, int c, unsigned Cnt);
+void * GUI__memcpy(void * pDest, const void * pSrc, size_t NumBytes);
+void * GUI__memset(void * pDest, int c, size_t Cnt);
 
 /*********************************************************************
 *
@@ -615,6 +620,8 @@ int GUI_JPEG_DrawScaledEx(GUI_GET_DATA_FUNC * pfGetData, void * p, int x0, int y
 int GUI_JPEG_GetInfo     (const void * pFileData, int DataSize,    GUI_JPEG_INFO * pInfo);
 int GUI_JPEG_GetInfoEx   (GUI_GET_DATA_FUNC * pfGetData, void * p, GUI_JPEG_INFO * pInfo);
 
+void GUI_JPEG_SetpfDrawEx(int (* pfDrawEx)(GUI_GET_DATA_FUNC * pfGetData, void * p, int x0, int y0));
+
 /*********************************************************************
 *
 *       MOVIE file support
@@ -643,14 +650,28 @@ void             GUI_MOVIE_DrawFrame    (GUI_MOVIE_HANDLE hMovie, int Index, int
 U32              GUI_MOVIE_GetFrameIndex(GUI_MOVIE_HANDLE hMovie);
 int              GUI_MOVIE_GetInfo      (const void * pFileData, U32 FileSize, GUI_MOVIE_INFO * pInfo);
 int              GUI_MOVIE_GetInfoEx    (GUI_GET_DATA_FUNC * pfGetData, void * pParam, GUI_MOVIE_INFO * pInfo);
+int              GUI_MOVIE_GetNumFrames (GUI_MOVIE_HANDLE hMovie);
 int              GUI_MOVIE_GetPos       (GUI_MOVIE_HANDLE hMovie, int * pxPos, int * pyPos, int * pxSize, int * pySize);
 int              GUI_MOVIE_GotoFrame    (GUI_MOVIE_HANDLE hMovie, U32 Frame);
 int              GUI_MOVIE_Pause        (GUI_MOVIE_HANDLE hMovie);
 int              GUI_MOVIE_Play         (GUI_MOVIE_HANDLE hMovie);
 int              GUI_MOVIE_SetPeriod    (GUI_MOVIE_HANDLE hMovie, unsigned Period);
+void             GUI_MOVIE_SetpfNotify  (GUI_MOVIE_FUNC * pfNotify);
 int              GUI_MOVIE_SetPos       (GUI_MOVIE_HANDLE hMovie, int xPos, int yPos);
 int              GUI_MOVIE_Show         (GUI_MOVIE_HANDLE hMovie, int xPos, int yPos, int DoLoop);
 int              GUI_MOVIE_ShowScaled   (GUI_MOVIE_HANDLE hMovie, int xPos, int yPos, int num, int denom, int DoLoop);
+
+/*********************************************************************
+*
+*       Splines
+*/
+GUI_HMEM GUI_SPLINE_Create  (const int * px, const int * py, unsigned NumPoints);
+void     GUI_SPLINE_Draw    (GUI_HMEM hSpline, int x, int y);
+void     GUI_SPLINE_Delete  (GUI_HMEM hSpline);
+I16      GUI_SPLINE_GetY    (GUI_HMEM hSpline, unsigned Index, float * py);
+unsigned GUI_SPLINE_GetXSize(GUI_HMEM hSpline);
+void     GUI_SPLINE_DrawAA  (GUI_HMEM hSpline, int x, int y, unsigned Width);
+
 /*********************************************************************
 *
 *       Cursor routines
@@ -747,52 +768,56 @@ typedef enum { GUI_WRAPMODE_NONE, GUI_WRAPMODE_WORD, GUI_WRAPMODE_CHAR } GUI_WRA
 *
 *       Text related routines
 */
-void  GUI_DispCEOL             (void);
-void  GUI_DispChar             (U16 c);
-void  GUI_DispCharAt           (U16 c, I16P x, I16P y);
-void  GUI_DispChars            (U16 c, int Cnt);
-void  GUI_DispNextLine         (void);
-void  GUI_DispString           (const char * s);
-void  GUI_DispStringAt         (const char * s, int x, int y);
-void  GUI_DispStringAtCEOL     (const char * s, int x, int y);
-void  GUI_DispStringHCenterAt  (const char * s, int x, int y);
-void  GUI__DispStringInRect    (const char * s, GUI_RECT * pRect, int TextAlign, int MaxNumChars);
-void  GUI_DispStringInRect     (const char * s, GUI_RECT * pRect, int TextAlign);
+void  GUI_DispCEOL              (void);
+void  GUI_DispChar              (U16 c);
+void  GUI_DispCharAt            (U16 c, I16P x, I16P y);
+void  GUI_DispChars             (U16 c, int Cnt);
+void  GUI_DispNextLine          (void);
+void  GUI_DispString            (const char * s);
+void  GUI_DispStringAt          (const char * s, int x, int y);
+void  GUI_DispStringAtCEOL      (const char * s, int x, int y);
+void  GUI_DispStringHCenterAt   (const char * s, int x, int y);
+void  GUI__DispStringInRect     (const char * s, GUI_RECT * pRect, int TextAlign, int MaxNumChars);
+void  GUI_DispStringInRect      (const char * s, GUI_RECT * pRect, int TextAlign);
 #if GUI_SUPPORT_ROTATION
-  void  GUI_DispStringInRectEx (const char * s, GUI_RECT * pRect, int TextAlign, int MaxLen, const GUI_ROTATION * pLCD_Api);
+void  GUI_DispStringInRectEx    (const char * s, GUI_RECT * pRect, int TextAlign, int MaxLen, const GUI_ROTATION * pLCD_Api);
 #endif
-void  GUI_DispStringInRectMax  (const char * s, GUI_RECT * pRect, int TextAlign, int MaxLen); /* Not to be doc. */
-void  GUI_DispStringInRectWrap (const char * s, GUI_RECT * pRect, int TextAlign, GUI_WRAPMODE WrapMode); /* Not to be doc. */
-void  GUI_DispStringLen        (const char * s, int Len);
-void  GUI_GetTextExtend        (GUI_RECT* pRect, const char * s, int Len);
-int   GUI_GetYAdjust           (void);
-int   GUI_GetDispPosX          (void);
-int   GUI_GetDispPosY          (void);
-const GUI_FONT * GUI_GetFont(void);
-int   GUI_GetCharDistX         (U16 c);
-int   GUI_GetCharDistXEx       (U16 c, int * pSizeX);
-int   GUI_GetStringDistX       (const char * s);
-GUI_DRAWMODE GUI_GetDrawMode   (void);
-int   GUI_GetFontDistY         (void);
-int   GUI_GetFontSizeY         (void);
-void  GUI_GetFontInfo          (const GUI_FONT * pFont, GUI_FONTINFO * pfi);
-void  GUI_GetOrg               (int * px, int * py);
-int   GUI_GetYSizeOfFont       (const GUI_FONT * pFont);
-int   GUI_GetYDistOfFont       (const GUI_FONT * pFont);
-int   GUI_GetTextAlign         (void);
-int   GUI_GetTextMode          (void);
-char  GUI_IsInFont             (const GUI_FONT * pFont, U16 c);
-int   GUI_SetTextAlign         (int Align);
-int   GUI_SetTextMode          (int Mode);
-char  GUI_SetTextStyle         (char Style);
-int   GUI_SetLBorder           (int x);
-const GUI_FONT * GUI_SetFont(const GUI_FONT * pNewFont);
-char  GUI_GotoXY               (int x, int y);
-char  GUI_GotoX                (int x);
-char  GUI_GotoY                (int y);
-int   GUI_WrapGetNumLines      (const char * pText, int xSize, GUI_WRAPMODE WrapMode);
-int   GUI_WrapGetPositions     (const char * pText, int xSize, GUI_WRAPMODE WrapMode, int * aPos, int NumItems);
-void  GUI_WrapSetSeparators    (const U16 * pSep, int NumSeps);
+void  GUI_DispStringInRectMax   (const char * s, GUI_RECT * pRect, int TextAlign, int MaxLen); /* Not to be doc. */
+void  GUI_DispStringInRectWrap  (const char * s, GUI_RECT * pRect, int TextAlign, GUI_WRAPMODE WrapMode); /* Not to be doc. */
+#if GUI_SUPPORT_ROTATION
+void  GUI_DispStringInRectWrapEx(const char * s, GUI_RECT * pRect, int TextAlign, GUI_WRAPMODE WrapMode, const GUI_ROTATION * pLCD_Api);
+#endif
+void  GUI_DispStringLen         (const char * s, int Len);
+void  GUI_GetTextExtend         (GUI_RECT* pRect, const char * s, int Len);
+int   GUI_GetYAdjust            (void);
+int   GUI_GetDispPosX           (void);
+int   GUI_GetDispPosY           (void);
+const GUI_FONT * GUI_GetFont    (void);
+int   GUI_GetCharDistX          (U16 c);
+int   GUI_GetCharDistXEx        (U16 c, int * pSizeX);
+int   GUI_GetStringDistX        (const char * s);
+GUI_DRAWMODE GUI_GetDrawMode    (void);
+int   GUI_GetFontDistY          (void);
+int   GUI_GetFontSizeY          (void);
+void  GUI_GetFontInfo           (const GUI_FONT * pFont, GUI_FONTINFO * pfi);
+void  GUI_GetOrg                (int * px, int * py);
+int   GUI_GetYSizeOfFont        (const GUI_FONT * pFont);
+int   GUI_GetYDistOfFont        (const GUI_FONT * pFont);
+int   GUI_GetTextAlign          (void);
+int   GUI_GetTextMode           (void);
+char  GUI_IsInFont              (const GUI_FONT * pFont, U16 c);
+int   GUI_SetTextAlign          (int Align);
+int   GUI_SetTextMode           (int Mode);
+char  GUI_SetTextStyle          (char Style);
+int   GUI_SetLBorder            (int x);
+U8    GUI_SetStrikeWidth        (U8 StrikeWidth);
+const GUI_FONT * GUI_SetFont    (const GUI_FONT * pNewFont);
+char  GUI_GotoXY                (int x, int y);
+char  GUI_GotoX                 (int x);
+char  GUI_GotoY                 (int y);
+int   GUI_WrapGetNumLines       (const char * pText, int xSize, GUI_WRAPMODE WrapMode);
+int   GUI_WrapGetPositions      (const char * pText, int xSize, GUI_WRAPMODE WrapMode, int * aPos, int NumItems);
+void  GUI_WrapSetSeparators     (const U16 * pSep, int NumSeps);
 
 int   GUI_GetLeadingBlankCols (U16 c);
 int   GUI_GetTrailingBlankCols(U16 c);
@@ -1117,6 +1142,7 @@ void GUI_MULTIBUF_UseSingleBuffer(void);
 int  GUI_SPY_Process      (GUI_tSend pfSend, GUI_tRecv pfRecv, void * pConnectInfo);
 void GUI_SPY_SetMemHandler(GUI_tMalloc pMalloc, GUI_tFree pFree);
 int  GUI_SPY_StartServer  (void);
+int  GUI_SPY_StartServerEx(int (* pGUI_SPY_X_StartServer)(void));
 int  GUI_SPY_X_StartServer(void);
 
 /*********************************************************************
@@ -1175,7 +1201,7 @@ I32 GUI_ANIM__Accel     (GUI_TIMER_TIME ts, GUI_TIMER_TIME te, GUI_TIMER_TIME tN
 I32 GUI_ANIM__AccelDecel(GUI_TIMER_TIME ts, GUI_TIMER_TIME te, GUI_TIMER_TIME tNow);
 
 int             GUI_ANIM_AddItem(GUI_ANIM_HANDLE hAnim, GUI_TIMER_TIME ts, GUI_TIMER_TIME te, GUI_ANIM_GETPOS_FUNC pfGetPos, void * pVoid, GUI_ANIMATION_FUNC * pfAnim);
-GUI_ANIM_HANDLE GUI_ANIM_Create (GUI_TIMER_TIME Period, unsigned MinTimePerFrame, void * pVoid, void (* pfSliceInfo)(int State, void * pVoid));
+GUI_ANIM_HANDLE GUI_ANIM_Create (GUI_TIMER_TIME Period, unsigned MinTimePerFrame, void * pVoid, void (* pfSliceInfo)(int State, void * _pVoid));
 void            GUI_ANIM_Delete (GUI_ANIM_HANDLE hAnim);
 int             GUI_ANIM_Exec   (GUI_ANIM_HANDLE hAnim);
 void            GUI_ANIM_Start  (GUI_ANIM_HANDLE hAnim);
@@ -1366,6 +1392,7 @@ void GUI_AA_EnableHiRes      (void);
 int  GUI_AA_GetFactor        (void);
 void GUI_AA_SetFactor        (int Factor);
 void GUI_AA_DrawArc          (int x0, int y0, int rx, int ry, int a0, int a1);
+void GUI_AA_DrawCircle       (int x0, int y0, int r);  // Currently not implemented, only for Dave2D
 void GUI_AA_DrawLine         (int x0, int y0, int x1, int y1);
 void GUI_AA_DrawPolyOutline  (const GUI_POINT * pSrc, int NumPoints, int Thickness, int x, int y);
 void GUI_AA_DrawPolyOutlineEx(const GUI_POINT * pSrc, int NumPoints, int Thickness, int x, int y, GUI_POINT * pBuffer);
@@ -1383,6 +1410,13 @@ void GUI_AA_GetGammaAA4      (U8 * pGamma);
 void GUI_AA_EnableGammaAA4   (int OnOff);
 
 #define GUI_AA_PreserveTrans(OnOff) GUI_PreserveTrans(OnOff)  // For compatibility only
+
+void GUI_AA_SetFuncDrawArc        (int (* pfDrawArc)    (int x0, int y0, int rx, int ry, int a0, int a1));
+void GUI_AA_SetFuncDrawCircle     (int (* pfDrawCircle) (int x0, int y0, int r));
+void GUI_AA_SetFuncDrawLine       (int (* pfDrawLine)   (int x0, int y0, int x1, int y1));
+void GUI_AA_SetFuncDrawPolyOutline(int (* pfDrawPolyOutline)(const GUI_POINT * pSrc, int NumPoints, int Thickness, int x, int y));
+void GUI_AA_SetFuncFillCircle     (int (* pfFillCircle) (int x0, int y0, int r));
+void GUI_AA_SetFuncFillPolygon    (int (* pfFillPolygon)(const GUI_POINT * pPoints, int NumPoints, int x0, int y0));
 
 /*********************************************************************
 *

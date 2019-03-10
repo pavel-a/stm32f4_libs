@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : HEADER.h
 Purpose     : HEADER include
 --------------------END-OF-HEADER-------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef HEADER_H
 #define HEADER_H
 
@@ -131,35 +126,36 @@ GUI_COLOR          HEADER_GetDefaultTextColor (void);
 *
 **********************************************************************
 */
-void      HEADER_AddItem            (HEADER_Handle hObj, int Width, const char * s, int Align);
-void      HEADER_DeleteItem         (HEADER_Handle hObj, unsigned Index);
-GUI_COLOR HEADER_GetArrowColor      (HEADER_Handle hObj);
-GUI_COLOR HEADER_GetBkColor         (HEADER_Handle hObj);
-int       HEADER_GetHeight          (HEADER_Handle hObj);
-int       HEADER_GetItemWidth       (HEADER_Handle hObj, unsigned int Index);
-int       HEADER_GetNumItems        (HEADER_Handle hObj);
-int       HEADER_GetSel             (HEADER_Handle hObj);
-GUI_COLOR HEADER_GetTextColor       (HEADER_Handle hObj);
-int       HEADER_GetUserData        (HEADER_Handle hObj, void * pDest, int NumBytes);
-void      HEADER_SetArrowColor      (HEADER_Handle hObj, GUI_COLOR Color);
-void      HEADER_SetBitmap          (HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP * pBitmap);
-void      HEADER_SetBitmapEx        (HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP * pBitmap, int x, int y);
-void      HEADER_SetBkColor         (HEADER_Handle hObj, GUI_COLOR Color);
-void      HEADER_SetBMP             (HEADER_Handle hObj, unsigned int Index, const void * pBitmap);
-void      HEADER_SetBMPEx           (HEADER_Handle hObj, unsigned int Index, const void * pBitmap, int x, int y);
-void      HEADER_SetDirIndicator    (HEADER_Handle hObj, int Column, int Reverse); /* !!!Not to be documented!!! */
-void      HEADER_SetDragLimit       (HEADER_Handle hObj, unsigned DragLimit);
-unsigned  HEADER_SetFixed           (HEADER_Handle hObj, unsigned Fixed);
-void      HEADER_SetFont            (HEADER_Handle hObj, const GUI_FONT * pFont);
-void      HEADER_SetHeight          (HEADER_Handle hObj, int Height);
-void      HEADER_SetTextAlign       (HEADER_Handle hObj, unsigned int Index, int Align);
-void      HEADER_SetItemText        (HEADER_Handle hObj, unsigned int Index, const char * s);
-void      HEADER_SetItemWidth       (HEADER_Handle hObj, unsigned int Index, int Width);
-void      HEADER_SetScrollPos       (HEADER_Handle hObj, int ScrollPos);
-void      HEADER_SetStreamedBitmap  (HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP_STREAM * pBitmap);
-void      HEADER_SetStreamedBitmapEx(HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP_STREAM * pBitmap, int x, int y);
-void      HEADER_SetTextColor       (HEADER_Handle hObj, GUI_COLOR Color);
-int       HEADER_SetUserData        (HEADER_Handle hObj, const void * pSrc, int NumBytes);
+void             HEADER_AddItem            (HEADER_Handle hObj, int Width, const char * s, int Align);
+void             HEADER_DeleteItem         (HEADER_Handle hObj, unsigned Index);
+GUI_COLOR        HEADER_GetArrowColor      (HEADER_Handle hObj);
+GUI_COLOR        HEADER_GetBkColor         (HEADER_Handle hObj);
+const GUI_FONT * HEADER_GetFont            (HEADER_Handle hObj);
+int              HEADER_GetHeight          (HEADER_Handle hObj);
+int              HEADER_GetItemWidth       (HEADER_Handle hObj, unsigned int Index);
+int              HEADER_GetNumItems        (HEADER_Handle hObj);
+int              HEADER_GetSel             (HEADER_Handle hObj);
+GUI_COLOR        HEADER_GetTextColor       (HEADER_Handle hObj);
+int              HEADER_GetUserData        (HEADER_Handle hObj, void * pDest, int NumBytes);
+void             HEADER_SetArrowColor      (HEADER_Handle hObj, GUI_COLOR Color);
+void             HEADER_SetBitmap          (HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP * pBitmap);
+void             HEADER_SetBitmapEx        (HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP * pBitmap, int x, int y);
+void             HEADER_SetBkColor         (HEADER_Handle hObj, GUI_COLOR Color);
+void             HEADER_SetBMP             (HEADER_Handle hObj, unsigned int Index, const void * pBitmap);
+void             HEADER_SetBMPEx           (HEADER_Handle hObj, unsigned int Index, const void * pBitmap, int x, int y);
+void             HEADER_SetDirIndicator    (HEADER_Handle hObj, int Column, int Reverse); /* !!!Not to be documented!!! */
+void             HEADER_SetDragLimit       (HEADER_Handle hObj, unsigned DragLimit);
+unsigned         HEADER_SetFixed           (HEADER_Handle hObj, unsigned Fixed);
+void             HEADER_SetFont            (HEADER_Handle hObj, const GUI_FONT * pFont);
+void             HEADER_SetHeight          (HEADER_Handle hObj, int Height);
+void             HEADER_SetTextAlign       (HEADER_Handle hObj, unsigned int Index, int Align);
+void             HEADER_SetItemText        (HEADER_Handle hObj, unsigned int Index, const char * s);
+void             HEADER_SetItemWidth       (HEADER_Handle hObj, unsigned int Index, int Width);
+void             HEADER_SetScrollPos       (HEADER_Handle hObj, int ScrollPos);
+void             HEADER_SetStreamedBitmap  (HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP_STREAM * pBitmap);
+void             HEADER_SetStreamedBitmapEx(HEADER_Handle hObj, unsigned int Index, const GUI_BITMAP_STREAM * pBitmap, int x, int y);
+void             HEADER_SetTextColor       (HEADER_Handle hObj, GUI_COLOR Color);
+int              HEADER_SetUserData        (HEADER_Handle hObj, const void * pSrc, int NumBytes);
 
 /*********************************************************************
 *

@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : GUIDRV_FlexColor.h
 Purpose     : Interface definition for GUIDRV_FlexColor driver
 ---------------------------END-OF-HEADER------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef GUIDRV_FLEXCOLOR_H
 #define GUIDRV_FLEXCOLOR_H
 
@@ -99,6 +94,7 @@ extern "C" {     /* Make sure we have C-declarations in C++ programs */
 #define GUIDRV_FLEXCOLOR_F66721   GUIDRV_FlexColor_SetFunc66721
 #define GUIDRV_FLEXCOLOR_F66722   GUIDRV_FlexColor_SetFunc66722
 #define GUIDRV_FLEXCOLOR_F66723   GUIDRV_FlexColor_SetFunc66723
+#define GUIDRV_FLEXCOLOR_F66724   GUIDRV_FlexColor_SetFunc66724
 #define GUIDRV_FLEXCOLOR_F66772   GUIDRV_FlexColor_SetFunc66772
 
 //
@@ -174,6 +170,7 @@ extern const GUI_DEVICE_API GUIDRV_FlexColor_API;
   void GUIDRV_FlexColor_SetFunc66721     (GUI_DEVICE * pDevice);
   void GUIDRV_FlexColor_SetFunc66722     (GUI_DEVICE * pDevice);
   void GUIDRV_FlexColor_SetFunc66723     (GUI_DEVICE * pDevice);
+  void GUIDRV_FlexColor_SetFunc66724     (GUI_DEVICE * pDevice);
   void GUIDRV_FlexColor_SetFunc66772     (GUI_DEVICE * pDevice);
 
   //
@@ -239,6 +236,7 @@ extern const GUI_DEVICE_API GUIDRV_FlexColor_API;
   #define GUIDRV_FlexColor_SetFunc66721(pDevice)
   #define GUIDRV_FlexColor_SetFunc66722(pDevice)
   #define GUIDRV_FlexColor_SetFunc66723(pDevice)
+  #define GUIDRV_FlexColor_SetFunc66724(pDevice)
   #define GUIDRV_FlexColor_SetFunc66772(pDevice)
 
   //

@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : CHECKBOX.h
 Purpose     : CHECKBOX include
 --------------------END-OF-HEADER-------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef CHECKBOX_H
 #define CHECKBOX_H
 
@@ -159,22 +154,27 @@ void             CHECKBOX_SetDefaultTextColor (GUI_COLOR Color);
 *
 **********************************************************************
 */
-
-int       CHECKBOX_GetState     (CHECKBOX_Handle hObj);
-int       CHECKBOX_GetText      (CHECKBOX_Handle hObj, char * pBuffer, int MaxLen);
-int       CHECKBOX_IsChecked    (CHECKBOX_Handle hObj);
-void      CHECKBOX_SetBkColor   (CHECKBOX_Handle hObj, GUI_COLOR Color);
-GUI_COLOR CHECKBOX_SetBoxBkColor(CHECKBOX_Handle hObj, GUI_COLOR Color, int Index);
-GUI_COLOR CHECKBOX_SetFocusColor(CHECKBOX_Handle hObj, GUI_COLOR Color);
-void      CHECKBOX_SetFont      (CHECKBOX_Handle hObj, const GUI_FONT * pFont);
-void      CHECKBOX_SetImage     (CHECKBOX_Handle hObj, const GUI_BITMAP * pBitmap, unsigned int Index);
-void      CHECKBOX_SetNumStates (CHECKBOX_Handle hObj, unsigned NumStates);
-void      CHECKBOX_SetSpacing   (CHECKBOX_Handle hObj, unsigned Spacing);
-void      CHECKBOX_SetState     (CHECKBOX_Handle hObj, unsigned State);
-void      CHECKBOX_SetText      (CHECKBOX_Handle hObj, const char * pText);
-void      CHECKBOX_SetTextAlign (CHECKBOX_Handle hObj, int Align);
-void      CHECKBOX_SetTextColor (CHECKBOX_Handle hObj, GUI_COLOR Color);
-int       CHECKBOX_SetUserData  (CHECKBOX_Handle hObj, const void * pSrc, int NumBytes);
+GUI_COLOR        CHECKBOX_GetBkColor   (CHECKBOX_Handle hObj);
+GUI_COLOR        CHECKBOX_GetBoxBkColor(CHECKBOX_Handle hObj, int Index);
+GUI_COLOR        CHECKBOX_GetFocusColor(CHECKBOX_Handle hObj);
+const GUI_FONT * CHECKBOX_GetFont      (CHECKBOX_Handle hObj);
+int              CHECKBOX_GetState     (CHECKBOX_Handle hObj);
+int              CHECKBOX_GetText      (CHECKBOX_Handle hObj, char * pBuffer, int MaxLen);
+int              CHECKBOX_GetTextAlign (CHECKBOX_Handle hObj);
+GUI_COLOR        CHECKBOX_GetTextColor (CHECKBOX_Handle hObj);
+int              CHECKBOX_IsChecked    (CHECKBOX_Handle hObj);
+void             CHECKBOX_SetBkColor   (CHECKBOX_Handle hObj, GUI_COLOR Color);
+GUI_COLOR        CHECKBOX_SetBoxBkColor(CHECKBOX_Handle hObj, GUI_COLOR Color, int Index);
+GUI_COLOR        CHECKBOX_SetFocusColor(CHECKBOX_Handle hObj, GUI_COLOR Color);
+void             CHECKBOX_SetFont      (CHECKBOX_Handle hObj, const GUI_FONT * pFont);
+void             CHECKBOX_SetImage     (CHECKBOX_Handle hObj, const GUI_BITMAP * pBitmap, unsigned int Index);
+void             CHECKBOX_SetNumStates (CHECKBOX_Handle hObj, unsigned NumStates);
+void             CHECKBOX_SetSpacing   (CHECKBOX_Handle hObj, unsigned Spacing);
+void             CHECKBOX_SetState     (CHECKBOX_Handle hObj, unsigned State);
+void             CHECKBOX_SetText      (CHECKBOX_Handle hObj, const char * pText);
+void             CHECKBOX_SetTextAlign (CHECKBOX_Handle hObj, int Align);
+void             CHECKBOX_SetTextColor (CHECKBOX_Handle hObj, GUI_COLOR Color);
+int              CHECKBOX_SetUserData  (CHECKBOX_Handle hObj, const void * pSrc, int NumBytes);
 
 /*********************************************************************
 *

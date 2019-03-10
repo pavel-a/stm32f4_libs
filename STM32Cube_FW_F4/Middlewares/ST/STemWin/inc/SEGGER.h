@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,19 +26,19 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
-Licensing information
-Licensor:                 SEGGER Software GmbH
-Licensed to:              STMicroelectronics International NV, 39, Chemin du Champ-des Filles, 1228 Plan Les Ouates, Geneva, SWITZERLAND
-Licensed SEGGER software: emWin
-License number:           GUI-00429
-License model:            Buyout SRC [Buyout Source Code License, signed November 29th 2012]
-Licensed product:         -
-Licensed platform:        STMs ARM Cortex-M based 32 BIT CPUs
-Licensed number of seats: -
-----------------------------------------------------------------------
-Support and Update Agreement (SUA)
-SUA period:               2012-12-07 - 2017-12-31
-Contact to extend SUA:    sales@segger.com
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
 ----------------------------------------------------------------------
 File    : SEGGER.h
 Purpose : Global types etc & general purpose utility functions
@@ -144,7 +144,7 @@ typedef struct SEGGER_SNPRINTF_CONTEXT_struct SEGGER_SNPRINTF_CONTEXT;
 struct SEGGER_SNPRINTF_CONTEXT_struct {
   void*               pContext;                       // Application specific context.
   SEGGER_BUFFER_DESC* pBufferDesc;                    // Buffer descriptor to use for output.
-  void (*pfFlush)(SEGGER_SNPRINTF_CONTEXT* pContext); // Callback executed once the buffer is full. Callback decides if the buffer gets cleared to store more or not.
+  void (*pfFlush)(SEGGER_SNPRINTF_CONTEXT *);         // Callback executed once the buffer is full. Callback decides if the buffer gets cleared to store more or not.
 };
 
 typedef struct {
@@ -175,7 +175,7 @@ void SEGGER_memxor    (void* pDest, const void* pSrc, unsigned NumBytes);
 void SEGGER_StoreChar    (SEGGER_BUFFER_DESC* pBufferDesc, char c);
 void SEGGER_PrintUnsigned(SEGGER_BUFFER_DESC* pBufferDesc, U32 v, unsigned Base, int Precision);
 void SEGGER_PrintInt     (SEGGER_BUFFER_DESC* pBufferDesc, I32 v, unsigned Base, int Precision);
-int  SEGGER_snprintf     (char* pBuffer, int BufferSize, const char* sFormat, ...);
+//int  SEGGER_snprintf     (char* pBuffer, int BufferSize, const char* sFormat, ...);
 int  SEGGER_vsnprintf    (char* pBuffer, int BufferSize, const char* sFormat, va_list ParamList);
 int  SEGGER_vsnprintfEx  (SEGGER_SNPRINTF_CONTEXT* pContext, const char* sFormat, va_list ParamList);
 

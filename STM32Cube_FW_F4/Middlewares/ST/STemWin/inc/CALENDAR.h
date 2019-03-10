@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : CALENDAR.h
 Purpose     : Message box interface
 --------------------END-OF-HEADER-------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef CALENDAR_H
 #define CALENDAR_H
 
@@ -128,10 +123,13 @@ typedef struct {
 */
 WM_HWIN CALENDAR_Create           (WM_HWIN hParent, int xPos, int yPos, unsigned Year, unsigned Month, unsigned Day, unsigned FirstDayOfWeek, int Id, int Flags);
 void    CALENDAR_GetDate          (WM_HWIN hWin, CALENDAR_DATE * pDate);
+int     CALENDAR_GetDaysOfMonth   (CALENDAR_DATE * pDate);
 void    CALENDAR_GetSel           (WM_HWIN hWin, CALENDAR_DATE * pDate);
+int     CALENDAR_GetWeekday       (CALENDAR_DATE * pDate);
 void    CALENDAR_SetDate          (WM_HWIN hWin, CALENDAR_DATE * pDate);
 void    CALENDAR_SetSel           (WM_HWIN hWin, CALENDAR_DATE * pDate);
 void    CALENDAR_ShowDate         (WM_HWIN hWin, CALENDAR_DATE * pDate);
+int     CALENDAR_AddKey           (WM_HWIN hWin, int Key);
 
 /*********************************************************************
 *

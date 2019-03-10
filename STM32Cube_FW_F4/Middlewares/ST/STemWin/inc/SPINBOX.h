@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : SPINBOX.h
 Purpose     : SPINBOX header file
 --------------------END-OF-HEADER-------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef SPINBOX_H
 #define SPINBOX_H
 
@@ -151,23 +146,25 @@ void           SPINBOX_Callback(WM_MESSAGE * pMsg);
 *
 *       Get / Set properties
 */
-void        SPINBOX_EnableBlink     (SPINBOX_Handle hObj, int Period, int OnOff);
-GUI_COLOR   SPINBOX_GetBkColor      (SPINBOX_Handle hObj, unsigned int Index);
-GUI_COLOR   SPINBOX_GetButtonBkColor(SPINBOX_Handle hObj, unsigned int Index);
-EDIT_Handle SPINBOX_GetEditHandle   (SPINBOX_Handle hObj);
-int         SPINBOX_GetUserData     (SPINBOX_Handle hObj, void * pDest, int NumBytes);
-I32         SPINBOX_GetValue        (SPINBOX_Handle hObj);
-void        SPINBOX_SetBkColor      (SPINBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
-void        SPINBOX_SetButtonBkColor(SPINBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
-void        SPINBOX_SetButtonSize   (SPINBOX_Handle hObj, unsigned ButtonSize);
-void        SPINBOX_SetEdge         (SPINBOX_Handle hObj, U8 Edge);
-void        SPINBOX_SetEditMode     (SPINBOX_Handle hObj, U8 EditMode);
-void        SPINBOX_SetFont         (SPINBOX_Handle hObj, const GUI_FONT * pFont);
-void        SPINBOX_SetRange        (SPINBOX_Handle hObj, I32 Min, I32 Max);
-U16         SPINBOX_SetStep         (SPINBOX_Handle hObj, U16 Step);
-void        SPINBOX_SetTextColor    (SPINBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
-int         SPINBOX_SetUserData     (SPINBOX_Handle hObj, const void * pSrc, int NumBytes);
-void        SPINBOX_SetValue        (SPINBOX_Handle hObj, I32 Value);
+void             SPINBOX_EnableBlink     (SPINBOX_Handle hObj, int Period, int OnOff);
+GUI_COLOR        SPINBOX_GetBkColor      (SPINBOX_Handle hObj, unsigned int Index);
+GUI_COLOR        SPINBOX_GetButtonBkColor(SPINBOX_Handle hObj, unsigned int Index);
+EDIT_Handle      SPINBOX_GetEditHandle   (SPINBOX_Handle hObj);
+const GUI_FONT * SPINBOX_GetFont         (SPINBOX_Handle hObj);
+GUI_COLOR        SPINBOX_GetTextColor    (SPINBOX_Handle hObj, unsigned int Index);
+int              SPINBOX_GetUserData     (SPINBOX_Handle hObj, void * pDest, int NumBytes);
+I32              SPINBOX_GetValue        (SPINBOX_Handle hObj);
+void             SPINBOX_SetBkColor      (SPINBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
+void             SPINBOX_SetButtonBkColor(SPINBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
+void             SPINBOX_SetButtonSize   (SPINBOX_Handle hObj, unsigned ButtonSize);
+void             SPINBOX_SetEdge         (SPINBOX_Handle hObj, U8 Edge);
+void             SPINBOX_SetEditMode     (SPINBOX_Handle hObj, U8 EditMode);
+void             SPINBOX_SetFont         (SPINBOX_Handle hObj, const GUI_FONT * pFont);
+void             SPINBOX_SetRange        (SPINBOX_Handle hObj, I32 Min, I32 Max);
+U16              SPINBOX_SetStep         (SPINBOX_Handle hObj, U16 Step);
+void             SPINBOX_SetTextColor    (SPINBOX_Handle hObj, unsigned int Index, GUI_COLOR Color);
+int              SPINBOX_SetUserData     (SPINBOX_Handle hObj, const void * pSrc, int NumBytes);
+void             SPINBOX_SetValue        (SPINBOX_Handle hObj, I32 Value);
 
 /*********************************************************************
 *

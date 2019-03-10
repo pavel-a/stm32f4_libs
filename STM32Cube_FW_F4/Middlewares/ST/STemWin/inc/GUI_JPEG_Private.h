@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -25,6 +25,20 @@ ment supplied by STMicroelectronics International N.V.
 Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
+----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
 ----------------------------------------------------------------------
 File        : GUI_JPEG_Private.h
 Purpose     : Private header
@@ -43,25 +57,6 @@ Explanation of terms:
 ---------------------------END-OF-HEADER------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef GUI_JPEG_PRIVATE_H
 #define GUI_JPEG_PRIVATE_H
 
@@ -97,7 +92,7 @@ Explanation of terms:
 *
 *       Marker definitions
 */
-#define M_SOF0  0xc0 /* Start Of Frame */
+#define M_SOF0  0xc0 // Start Of Frame
 #define M_SOF1  0xc1
 #define M_SOF2  0xc2
 #define M_SOF3  0xc3
@@ -115,9 +110,9 @@ Explanation of terms:
 #define M_SOF14 0xce
 #define M_SOF15 0xcf
 
-#define M_DHT   0xc4 /* Define Huffman Table */
+#define M_DHT   0xc4 // Define Huffman Table
 
-#define M_DAC   0xcc /* Define Arithmetic Coding Table */
+#define M_DAC   0xcc // Define Arithmetic Coding Table
 
 #define M_RST0  0xd0
 #define M_RST1  0xd1
@@ -128,14 +123,14 @@ Explanation of terms:
 #define M_RST6  0xd6
 #define M_RST7  0xd7
 
-#define M_SOI   0xd8 /* Start Of Image */
+#define M_SOI   0xd8 // Start Of Image
 #define M_EOI   0xd9
-#define M_SOS   0xda /* Start Of Scan */
-#define M_DQT   0xdb /* Define Quantisation Table */
-#define M_DRI   0xdd /* Define Restart Interval */
+#define M_SOS   0xda // Start Of Scan
+#define M_DQT   0xdb // Define Quantisation Table
+#define M_DRI   0xdd // Define Restart Interval
 
-#define M_APP0  0xe0 /* Application Usage */
-#define M_APP14 0xee /* Adobe marker */
+#define M_APP0  0xe0 // Application Usage
+#define M_APP14 0xee // Adobe marker
 
 #define M_TEM   0x01
 
@@ -148,20 +143,26 @@ Explanation of terms:
 *
 **********************************************************************
 */
-/* Default parameter structure for reading data from memory */
+//
+// Default parameter structure for reading data from memory
+//
 typedef struct {
   const U8 * pFileData;
   I32   FileSize;
 } GUI_JPEG_PARAM;
 
-/* Huffman table definition */
+//
+// Huffman table definition
+//
 typedef struct {
   unsigned aLookUp[256];
   U8       aCodeSize[256];
   unsigned aTree[512];
 } HUFF_TABLE;
 
-/* Coefficient buffer used for progressive JPEGs */
+//
+// Coefficient buffer used for progressive JPEGs
+//
 typedef struct {
   int NumBlocksX;
   int NumBlocksY;
@@ -172,32 +173,44 @@ typedef struct {
 typedef struct GUI_JPEG_DCONTEXT GUI_JPEG_DCONTEXT;
 
 struct GUI_JPEG_DCONTEXT {
-  /* Function pointer for reading one byte */
+  //
+  // Function pointer for reading one byte
+  //
   int (* pfGetU8)(GUI_JPEG_DCONTEXT * pContext, U8 * pByte);
 
-  GUI_GET_DATA_FUNC * pfGetData; /* 'GetData' Function pointer */
-  void * pParam;                 /* Pointer passed to 'GetData' function */
-  U32 Off;                       /* Data pointer */
-  /* Image size */
+  GUI_GET_DATA_FUNC * pfGetData; // 'GetData' Function pointer
+  void * pParam;                 // Pointer passed to 'GetData' function
+  U32 Off;                       // Data pointer
+  //
+  // Image size
+  //
   U16 xSize;
   U16 ySize;
-  /* Input buffer */
+  //
+  // Input buffer
+  //
   const U8 * pBuffer;
   unsigned   NumBytesInBuffer;
   U8         StartOfFile;
-  U8         aStuff[4];        /* Stuff back buffer */
-  U8         NumBytesStuffed;  /* Number of stuffed bytes */
-  /* Bit buffer */
+  U8         aStuff[4];        // Stuff back buffer
+  U8         NumBytesStuffed;  // Number of stuffed bytes
+  //
+  // Bit buffer
+  //
   U32 BitBuffer;
   int NumBitsLeft;
-  /* Huffman tables */
+  //
+  // Huffman tables
+  //
   U8 aHuffNumTableAvail[MAX_HUFFTABLES];
-  U8 aaHuffNum[MAX_HUFFTABLES][17];   /* Pointer to number of Huffman codes per bit size */
-  U8 aaHuffVal[MAX_HUFFTABLES][256];  /* Pointer to Huffman codes */
+  U8 aaHuffNum[MAX_HUFFTABLES][17];   // Pointer to number of Huffman codes per bit size
+  U8 aaHuffVal[MAX_HUFFTABLES][256];  // Pointer to Huffman codes
   HUFF_TABLE aHuffTable[MAX_HUFFTABLES];
   HUFF_TABLE * apDC_Huff[MAX_BLOCKSPERMCU];
   HUFF_TABLE * apAC_Huff[MAX_BLOCKSPERMCU];
-  /* Quantization tables */
+  //
+  // Quantization tables
+  //
   U16 aaQuantTbl[MAX_QUANTTABLES][64];
   U16 * apQuantTbl[MAX_QUANTTABLES];
   //
@@ -228,18 +241,18 @@ struct GUI_JPEG_DCONTEXT {
   // Common
   //
   U8 TransformationRequired;
-  U8 IsProgressive;             /* Flag is set to 1 if JPEG is progressive */
-  U8 ScanType;                  /* Gray, Yh1v1, Yh1v2, Yh2v1, Yh2v2 */
-  int MaxMCUsPerRow;            /* Maximum number of MCUs per row */
-  int MaxMCUsPerCol;            /* Maximum number of MCUs per column */
-  int MaxBlocksPerMCU;          /* Maximum number of blocks per MCU */
-  int MaxBlocksPerRow;          /* Maximum number of blocks per row */
-  int MaxMCU_xSize;             /* MCU's max. X size in pixels */
-  int MaxMCU_ySize;             /* MCU's max. Y size in pixels */
-  int DestBytesPerPixel;        /* 4 (RGB) or 1 (Y) */
-  int DestBytesPerScanline;     /* Rounded up */
-  int RealDestBytesPerScanline; /* Actual bytes */
-  int EOB_Run;                  /* 'End Of Band' run */
+  U8 IsProgressive;             // Flag is set to 1 if JPEG is progressive
+  U8 ScanType;                  // Gray, Yh1v1, Yh1v2, Yh2v1, Yh2v2
+  int MaxMCUsPerRow;            // Maximum number of MCUs per row
+  int MaxMCUsPerCol;            // Maximum number of MCUs per column
+  int MaxBlocksPerMCU;          // Maximum number of blocks per MCU
+  int MaxBlocksPerRow;          // Maximum number of blocks per row
+  int MaxMCU_xSize;             // MCU's max. X size in pixels
+  int MaxMCU_ySize;             // MCU's max. Y size in pixels
+  int DestBytesPerPixel;        // 4 (RGB) or 1 (Y)
+  int DestBytesPerScanline;     // Rounded up
+  int RealDestBytesPerScanline; // Actual bytes
+  int EOB_Run;                  // 'End Of Band' run
   int RestartInterval;
   int RestartsLeft;
   int NextRestartNum;
@@ -247,31 +260,34 @@ struct GUI_JPEG_DCONTEXT {
   int MCUsPerCol;
   int NumBlocksPerMCU;
   int aMCU_Org[MAX_BLOCKSPERMCU];
-  /* Block buffer */
+  //
+  // Block buffer
+  //
   GUI_HMEM hBlocks;
   GUI_HMEM hBlockMaxZagSet;
-  /* Sample buffer */
+  //
+  // Sample buffer
+  //
   GUI_HMEM hSampleBuf;
   U8     * pSampleBuf;
-  /* Status */
-  int TotalLinesLeft; /* Total number of lines left in image */
-  int MCULinesLeft;   /* Total number of lines left in current MCU */
-  /* Output buffer(s) */
-  GUI_HMEM hScanLine0; /* Buffer 0 */
-  GUI_HMEM hScanLine1; /* Buffer 1, only used for V2 sampling factors */
+  //
+  // Status
+  //
+  int TotalLinesLeft; // Total number of lines left in image
+  int MCULinesLeft;   // Total number of lines left in current MCU
+  //
+  // Output buffer(s)
+  //
+  GUI_HMEM hScanLine0; // Buffer 0
+  GUI_HMEM hScanLine1; // Buffer 1, only used for V2 sampling factors
   U8 BufferIndex;
-  /* Arrays used for converting YCbCr to RGB */
+  //
+  // Arrays used for converting YCbCr to RGB
+  //
   int aCRR[256];
   int aCBB[256];
   I32 aCRG[256];
   I32 aCBG[256];
-  /* Banding */
-  U8 BandingRequired;        /* Flag if banding is required */
-  unsigned NumBands;         /* Number of required bands for drawing the complete frame */
-  int NumBlocksPerBand; /* Number of vertical blocks per band */
-  int FirstBlockOfBand;
-  int aFirstBlockOfBand[MAX_COMPONENTS];
-  int bpp;
 };
 
 /*********************************************************************
@@ -280,9 +296,7 @@ struct GUI_JPEG_DCONTEXT {
 *
 **********************************************************************
 */
-int       GUI_JPEG__AllocBandingCoeffBuffer (GUI_HMEM hContext);
 int       GUI_JPEG__DecodeLine              (GUI_JPEG_DCONTEXT * pContext);
-int       GUI_JPEG__DecodeProgressiveBanding(GUI_JPEG_DCONTEXT * pContext);
 void      GUI_JPEG__Free                    (GUI_JPEG_DCONTEXT * pContext);
 GUI_COLOR GUI_JPEG__GetColorGray            (const U8 ** ppData, unsigned SkipCnt);
 GUI_COLOR GUI_JPEG__GetColorRGB             (const U8 ** ppData, unsigned SkipCnt);

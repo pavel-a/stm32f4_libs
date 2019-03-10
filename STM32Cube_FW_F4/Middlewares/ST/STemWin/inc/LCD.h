@@ -9,7 +9,7 @@
 *                                                                    *
 **********************************************************************
 
-** emWin V5.40 - Graphical user interface for embedded applications **
+** emWin V5.44 - Graphical user interface for embedded applications **
 All  Intellectual Property rights  in the Software belongs to  SEGGER.
 emWin is protected by  international copyright laws.  Knowledge of the
 source code may not be used to write a similar product.  This file may
@@ -26,30 +26,25 @@ Full source code is available at: www.segger.com
 
 We appreciate your understanding and fairness.
 ----------------------------------------------------------------------
+
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics. 
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license SLA0044,
+  * the "License"; You may not use this file except in compliance with the License.
+  * You may obtain a copy of the License at:
+  *                      http://www.st.com/SLA0044
+  *
+  ******************************************************************************
+----------------------------------------------------------------------
 File        : LCD.h
 Purpose     : Declares LCD interface functions
 ----------------------------------------------------------------------
 */
 
-/**
-  ******************************************************************************
-  * @attention
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-  
 #ifndef LCD_H
 #define LCD_H
 
@@ -463,6 +458,7 @@ void (* LCD_GetDevFunc(int LayerIndex, int Item))(void);
 #define LCD_DEVFUNC_READPIXEL     0x26 /* ...reading a pixel index */
 #define LCD_DEVFUNC_READMPIXELS   0x27 /* ...reading multiple pixel indices */
 #define LCD_DEVFUNC_DRAWBMP_32BPP 0x28 /* ...drawing a 32bpp bitmap */
+#define LCD_DEVFUNC_SET_BUFFERPTR 0x29 /* ...setting an array of buffer pointers */
 
 /*********************************************************************
 *
@@ -556,51 +552,41 @@ void LCD_X_Config(void);
 
 /*********************************************************************
 *
-*       Set layer properties
+*       Get/Set layer properties
 */
-int LCD_SetAlphaEx     (int LayerIndex, int Alpha);
-int LCD_SetPosEx       (int LayerIndex, int xPos, int yPos);
-int LCD_SetSizeEx      (int LayerIndex, int xSize, int ySize);
-int LCD_SetVisEx       (int LayerIndex, int OnOff);
-int LCD_SetVRAMAddrEx  (int LayerIndex, void * pVRAM);
-int LCD_SetVSizeEx     (int LayerIndex, int xSize, int ySize);
-int LCD_SetAlphaModeEx (int LayerIndex, int AlphaMode);
-int LCD_SetChromaModeEx(int LayerIndex, int ChromaMode);
-int LCD_SetChromaEx    (int LayerIndex, LCD_COLOR ChromaMin, LCD_COLOR ChromaMax);
+int  LCD_GetPosEx       (int LayerIndex, int * pxPos, int * pyPos);
+int  LCD_OffEx          (int LayerIndex);
+int  LCD_OnEx           (int LayerIndex);
+int  LCD_RefreshEx      (int LayerIndex);
+int  LCD_SetAlphaEx     (int LayerIndex, int Alpha);
+int  LCD_SetAlphaModeEx (int LayerIndex, int AlphaMode);
+int  LCD_SetBufferPtrEx (int LayerIndex, const U32 * pBufferPTR);
+int  LCD_SetChromaEx    (int LayerIndex, LCD_COLOR ChromaMin, LCD_COLOR ChromaMax);
+int  LCD_SetChromaModeEx(int LayerIndex, int ChromaMode);
+int  LCD_SetDevFunc     (int LayerIndex, int IdFunc, void (* pDriverFunc)(void));
+int  LCD_SetLUTEntryEx  (int LayerIndex, U8 Pos, LCD_COLOR Color);
+int  LCD_SetPosEx       (int LayerIndex, int xPos, int yPos);
+int  LCD_SetSizeEx      (int LayerIndex, int xSize, int ySize);
+int  LCD_SetVisEx       (int LayerIndex, int OnOff);
+int  LCD_SetVRAMAddrEx  (int LayerIndex, void * pVRAM);
+int  LCD_SetVSizeEx     (int LayerIndex, int xSize, int ySize);
 
-int LCD_SetAlpha     (int Alpha);
-int LCD_SetVRAMAddr  (void * pVRAM);
-int LCD_SetVSize     (int xSize, int ySize);
-int LCD_SetSize      (int xSize, int ySize);
-int LCD_SetVis       (int OnOff);
-int LCD_SetPos       (int xPos, int yPos);
-int LCD_SetAlphaMode (int AlphaMode);
-int LCD_SetChromaMode(int ChromaMode);
-int LCD_SetChroma    (LCD_COLOR ChromaMin, LCD_COLOR ChromaMax);
-int LCD_SetLUTEntry  (U8 Pos, LCD_COLOR Color);
-int LCD_SetDevFunc   (int LayerIndex, int IdFunc, void (* pDriverFunc)(void));
-
-void LCD_SetOrg(int xOrg, int yOrg);
-
-int LCD_OnEx (int LayerIndex);
-int LCD_OffEx(int LayerIndex);
-int LCD_On   (void);
-int LCD_Off  (void);
-
-/*********************************************************************
-*
-*       Get layer properties
-*/
-int LCD_GetPosEx(int LayerIndex, int * pxPos, int * pyPos);
-
-int LCD_GetPos  (int * pxPos, int * pyPos);
-
-/*********************************************************************
-*
-*       Display refresh (optional)
-*/
-int LCD_Refresh  (void);
-int LCD_RefreshEx(int LayerIndex);
+int  LCD_GetPos         (int * pxPos, int * pyPos);
+int  LCD_Off            (void);
+int  LCD_On             (void);
+int  LCD_Refresh        (void);
+int  LCD_SetAlpha       (int Alpha);
+int  LCD_SetAlphaMode   (int AlphaMode);
+int  LCD_SetBufferPtr   (const U32 * pBufferPTR);
+int  LCD_SetChroma      (LCD_COLOR ChromaMin, LCD_COLOR ChromaMax);
+int  LCD_SetChromaMode  (int ChromaMode);
+int  LCD_SetLUTEntry    (U8 Pos, LCD_COLOR Color);
+void LCD_SetOrg         (int xOrg, int yOrg);
+int  LCD_SetPos         (int xPos, int yPos);
+int  LCD_SetSize        (int xSize, int ySize);
+int  LCD_SetVis         (int OnOff);
+int  LCD_SetVRAMAddr    (void * pVRAM);
+int  LCD_SetVSize       (int xSize, int ySize);
 
 /*********************************************************************
 *
@@ -653,7 +639,6 @@ void LCD_SetPixelIndex(int x, int y, int ColorIndex);
 
 /* Palette routines (Not available on all drivers) */
 void LCD_InitLUT(void);
-int  LCD_SetLUTEntryEx(int LayerIndex, U8 Pos, LCD_COLOR Color);
 void LCD_SetLUTEx(int LayerIndex, const LCD_PHYSPALETTE * pPalette);
 void LCD_SetLUT  (const LCD_PHYSPALETTE * pPalette);
 
