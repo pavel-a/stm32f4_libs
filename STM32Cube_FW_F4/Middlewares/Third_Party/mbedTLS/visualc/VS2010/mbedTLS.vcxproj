@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -149,6 +149,7 @@
     <ClInclude Include="..\..\include\mbedtls\aes.h" />
     <ClInclude Include="..\..\include\mbedtls\aesni.h" />
     <ClInclude Include="..\..\include\mbedtls\arc4.h" />
+    <ClInclude Include="..\..\include\mbedtls\aria.h" />
     <ClInclude Include="..\..\include\mbedtls\asn1.h" />
     <ClInclude Include="..\..\include\mbedtls\asn1write.h" />
     <ClInclude Include="..\..\include\mbedtls\base64.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="..\..\include\mbedtls\error.h" />
     <ClInclude Include="..\..\include\mbedtls\gcm.h" />
     <ClInclude Include="..\..\include\mbedtls\havege.h" />
+    <ClInclude Include="..\..\include\mbedtls\hkdf.h" />
     <ClInclude Include="..\..\include\mbedtls\hmac_drbg.h" />
     <ClInclude Include="..\..\include\mbedtls\md.h" />
     <ClInclude Include="..\..\include\mbedtls\md2.h" />
@@ -197,8 +199,10 @@
     <ClInclude Include="..\..\include\mbedtls\pkcs5.h" />
     <ClInclude Include="..\..\include\mbedtls\platform.h" />
     <ClInclude Include="..\..\include\mbedtls\platform_time.h" />
+    <ClInclude Include="..\..\include\mbedtls\platform_util.h" />
     <ClInclude Include="..\..\include\mbedtls\ripemd160.h" />
     <ClInclude Include="..\..\include\mbedtls\rsa.h" />
+    <ClInclude Include="..\..\include\mbedtls\rsa_internal.h" />
     <ClInclude Include="..\..\include\mbedtls\sha1.h" />
     <ClInclude Include="..\..\include\mbedtls\sha256.h" />
     <ClInclude Include="..\..\include\mbedtls\sha512.h" />
@@ -221,6 +225,7 @@
     <ClCompile Include="..\..\library\aes.c" />
     <ClCompile Include="..\..\library\aesni.c" />
     <ClCompile Include="..\..\library\arc4.c" />
+    <ClCompile Include="..\..\library\aria.c" />
     <ClCompile Include="..\..\library\asn1parse.c" />
     <ClCompile Include="..\..\library\asn1write.c" />
     <ClCompile Include="..\..\library\base64.c" />
@@ -246,6 +251,7 @@
     <ClCompile Include="..\..\library\error.c" />
     <ClCompile Include="..\..\library\gcm.c" />
     <ClCompile Include="..\..\library\havege.c" />
+    <ClCompile Include="..\..\library\hkdf.c" />
     <ClCompile Include="..\..\library\hmac_drbg.c" />
     <ClCompile Include="..\..\library\md.c" />
     <ClCompile Include="..\..\library\md2.c" />
@@ -265,8 +271,10 @@
     <ClCompile Include="..\..\library\pkparse.c" />
     <ClCompile Include="..\..\library\pkwrite.c" />
     <ClCompile Include="..\..\library\platform.c" />
+    <ClCompile Include="..\..\library\platform_util.c" />
     <ClCompile Include="..\..\library\ripemd160.c" />
     <ClCompile Include="..\..\library\rsa.c" />
+    <ClCompile Include="..\..\library\rsa_internal.c" />
     <ClCompile Include="..\..\library\sha1.c" />
     <ClCompile Include="..\..\library\sha256.c" />
     <ClCompile Include="..\..\library\sha512.c" />

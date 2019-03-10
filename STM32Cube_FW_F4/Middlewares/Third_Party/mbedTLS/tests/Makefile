@@ -35,7 +35,7 @@ ifdef SHARED
 SHARED_SUFFIX=.$(DLEXT)
 endif
 else
-DLEXT=so
+DLEXT ?= so
 EXEXT=
 SHARED_SUFFIX=
 endif
@@ -46,10 +46,13 @@ LOCAL_LDFLAGS += -lz
 endif
 
 APPS =	test_suite_aes.ecb$(EXEXT)	test_suite_aes.cbc$(EXEXT)	\
-	test_suite_aes.cfb$(EXEXT)	test_suite_aes.rest$(EXEXT)	\
+	test_suite_aes.cfb$(EXEXT)	test_suite_aes.ofb$(EXEXT)	\
+	test_suite_aes.xts$(EXEXT)					\
+	test_suite_aes.rest$(EXEXT)	\
 	test_suite_arc4$(EXEXT)		test_suite_asn1write$(EXEXT)	\
 	test_suite_base64$(EXEXT)	test_suite_blowfish$(EXEXT)	\
 	test_suite_camellia$(EXEXT)	test_suite_ccm$(EXEXT)		\
+	test_suite_aria$(EXEXT)						\
 	test_suite_cmac$(EXEXT)						\
 	test_suite_cipher.aes$(EXEXT)					\
 	test_suite_cipher.arc4$(EXEXT)	test_suite_cipher.ccm$(EXEXT)	\
@@ -70,6 +73,7 @@ APPS =	test_suite_aes.ecb$(EXEXT)	test_suite_aes.cbc$(EXEXT)	\
 	test_suite_gcm.aes192_en$(EXEXT)				\
 	test_suite_gcm.aes256_en$(EXEXT)				\
 	test_suite_gcm.camellia$(EXEXT)					\
+	test_suite_hkdf$(EXEXT)						\
 	test_suite_hmac_drbg.misc$(EXEXT)				\
 	test_suite_hmac_drbg.no_reseed$(EXEXT)				\
 	test_suite_hmac_drbg.nopr$(EXEXT)				\
@@ -109,9 +113,17 @@ test_suite_aes.cfb.c : suites/test_suite_aes.function suites/test_suite_aes.cfb.
 	echo "  Gen   $@"
 	perl scripts/generate_code.pl suites test_suite_aes test_suite_aes.cfb
 
+test_suite_aes.ofb.c : suites/test_suite_aes.function suites/test_suite_aes.ofb.data scripts/generate_code.pl suites/helpers.function suites/main_test.function
+	echo "  Gen   $@"
+	perl scripts/generate_code.pl suites test_suite_aes test_suite_aes.ofb
+
 test_suite_aes.rest.c : suites/test_suite_aes.function suites/test_suite_aes.rest.data scripts/generate_code.pl suites/helpers.function suites/main_test.function
 	echo "  Gen   $@"
 	perl scripts/generate_code.pl suites test_suite_aes test_suite_aes.rest
+
+test_suite_aes.xts.c : suites/test_suite_aes.function suites/test_suite_aes.xts.data scripts/generate_code.pl suites/helpers.function suites/main_test.function
+	echo "  Gen   $@"
+	perl scripts/generate_code.pl suites test_suite_aes test_suite_aes.xts
 
 test_suite_cipher.aes.c : suites/test_suite_cipher.function suites/test_suite_cipher.aes.data scripts/generate_code.pl suites/helpers.function suites/main_test.function
 	echo "  Gen   $@"
@@ -177,6 +189,10 @@ test_suite_gcm.camellia.c : suites/test_suite_gcm.function suites/test_suite_gcm
 	echo "  Gen   $@"
 	perl scripts/generate_code.pl suites test_suite_gcm test_suite_gcm.camellia
 
+test_suite_hkdf.c : suites/test_suite_hkdf.function suites/test_suite_hkdf.data scripts/generate_code.pl suites/helpers.function suites/main_test.function
+	echo "  Gen   $@"
+	perl scripts/generate_code.pl suites test_suite_hkdf test_suite_hkdf
+
 test_suite_hmac_drbg.misc.c : suites/test_suite_hmac_drbg.function suites/test_suite_hmac_drbg.misc.data scripts/generate_code.pl suites/helpers.function suites/main_test.function
 	echo "  Gen   $@"
 	perl scripts/generate_code.pl suites test_suite_hmac_drbg test_suite_hmac_drbg.misc
@@ -209,7 +225,15 @@ test_suite_aes.cfb$(EXEXT): test_suite_aes.cfb.c $(DEP)
 	echo "  CC    $<"
 	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
 
+test_suite_aes.ofb$(EXEXT): test_suite_aes.ofb.c $(DEP)
+	echo "  CC    $<"
+	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
+
 test_suite_aes.rest$(EXEXT): test_suite_aes.rest.c $(DEP)
+	echo "  CC    $<"
+	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
+
+test_suite_aes.xts$(EXEXT): test_suite_aes.xts.c $(DEP)
 	echo "  CC    $<"
 	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
 
@@ -341,6 +365,10 @@ test_suite_gcm.camellia$(EXEXT): test_suite_gcm.camellia.c $(DEP)
 	echo "  CC    $<"
 	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
 
+test_suite_hkdf$(EXEXT): test_suite_hkdf.c $(DEP)
+	echo "  CC    $<"
+	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
+
 test_suite_hmac_drbg.misc$(EXEXT): test_suite_hmac_drbg.misc.c $(DEP)
 	echo "  CC    $<"
 	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
@@ -434,6 +462,10 @@ test_suite_debug$(EXEXT): test_suite_debug.c $(DEP)
 	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
 
 test_suite_version$(EXEXT): test_suite_version.c $(DEP)
+	echo "  CC    $<"
+	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
+
+test_suite_aria$(EXEXT): test_suite_aria.c $(DEP)
 	echo "  CC    $<"
 	$(CC) $(LOCAL_CFLAGS) $(CFLAGS) $<	$(LOCAL_LDFLAGS) $(LDFLAGS) -o $@
 

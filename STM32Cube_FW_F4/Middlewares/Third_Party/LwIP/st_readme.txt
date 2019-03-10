@@ -46,6 +46,10 @@
   *
   ******************************************************************************
   @endverbatim
+### 13-August-2018 ###
+========================
+  + Add support to CMSIS-RTOS V2 API
+     - update the system/OS/sys_arch.c and system/arch/sys_arch.h file with CMSIS-RTOS v2 API
 
 ### 10-November-2017 ###
 ========================

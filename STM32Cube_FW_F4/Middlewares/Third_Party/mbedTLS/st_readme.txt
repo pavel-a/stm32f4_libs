@@ -45,6 +45,22 @@
   ******************************************************************************
   @endverbatim
 
+### 06-July-2018 ###
+========================
+   + Upgrade to use mbedTLS V2.11.0
+
+   + Re-apply the fix for EWARM warnings due to invalid code for 32 bit machines 
+     (still not integrated  see https://github.com/ARMmbed/mbedtls/issues/683)
+
+   + add template directory containing the files:
+     - net_socket_template.c        : mbedtls networking routines implemented using LwIP API
+     - rng_alt_template.c           : mbedtls RNG routing using the HAL_RNG API
+     - threading_alt_template.[c/h] : mbedtls mutex management template implementation 
+                                      using the CMSIS-RTOS v1/v2 API
+     - timing_alt.[c/h]             : mbedTLS alternate timing API based on
+                                      CMSIS-RTOS v1/v2 API
+
+
 ### 10-November-2017 ###
 ========================
    + Upgrade to use mbedTLS V2.6.1
@@ -61,7 +77,7 @@
 ### 23-December-2016 ###
 ========================
    + Upgrade to use mbedTLS V2.4.0
-   + Rename the "net_sockets.c" to "net_sockets_template.c" to provide the net_sockets.c actual implemtentation in user projects.
+   + Rename the "net_sockets.c" to "net_sockets_template.c" to provide the net_sockets.c actual implementation in user projects.
    + Fix warnings due to invalid code for 32 bit machines, see https://github.com/ARMmbed/mbedtls/issues/683
 
 

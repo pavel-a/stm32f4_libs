@@ -28,7 +28,6 @@
 #if defined(MBEDTLS_ASN1_WRITE_C)
 
 #include "mbedtls/asn1write.h"
-#include "mbedtls/bignum.h"
 
 #include <string.h>
 
@@ -83,11 +82,8 @@ int mbedtls_asn1_write_len( unsigned char **p, unsigned char *start, size_t len 
         *--(*p) = 0x83;
         return( 4 );
     }
-/*
- * Relevant only for 64 bit platforms.
- * On 32 bit platforms, size_t should always be 32 bits
- */
-#if defined(MBEDTLS_HAVE_INT64)
+
+#if SIZE_MAX > 0xFFFFFFFF
     if( len <= 0xFFFFFFFF )
 #endif
     {
@@ -102,11 +98,7 @@ int mbedtls_asn1_write_len( unsigned char **p, unsigned char *start, size_t len 
         return( 5 );
     }
 
-/*
- * Relevant only for 64 bit platforms.
- * On 32 bit platforms, this return statement will not be reached
- */
-#if defined(MBEDTLS_HAVE_INT64)
+#if SIZE_MAX > 0xFFFFFFFF
     return( MBEDTLS_ERR_ASN1_INVALID_LENGTH );
 #endif
 }
@@ -244,10 +236,6 @@ int mbedtls_asn1_write_int( unsigned char **p, unsigned char *start, int val )
     int ret;
     size_t len = 0;
 
-    // TODO negative values and values larger than 128
-    // DER format assumes 2s complement for numbers, so the leftmost bit
-    // should be 0 for positive numbers and 1 for negative numbers.
-    //
     if( *p - start < 1 )
         return( MBEDTLS_ERR_ASN1_BUF_TOO_SMALL );
 
