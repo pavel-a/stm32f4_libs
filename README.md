@@ -1,6 +1,17 @@
-This repo contains unofficial archive of STM32 libraries (www.st.com) we are interested in.
+This repo contains unofficial archive of STM32CubeF4 libraries (www.st.com) we are interested in.
 
 See wiki for more details.
+
+Versions:
+* 1.24 - Feb. 2019
+* 1.23
+* 1.21
+* 1.19
+* 1.18
+
+**Release notes** are in STM32Cube_FW_F4/Release_Notes.html
+
+[URL to check for updates](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm32-embedded-software/stm32cube-mcu-mpu-packages/stm32cubef4.html)
 
 The STM32 libraries and demo projects have separate branches per the MCU family:
 F0 for STM32F0xxx, F4 for STM32F4xxx, and so on.
