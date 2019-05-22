@@ -11,6 +11,8 @@
    
 The **STM32CubeF4 MCU Package** projects are directly running on the STM32F4 series boards. You can find in each Projects/*Board name* directories a set of software projects (Applications/Demonstration/Examples) 
 
+In this FW Package, the modules **Middlewares/ST/TouchGFX** **Middlewares/ST/STemWin** **Middlewares/ST/STM32_Audio** are not directly accessible. They must be downloaded from a ST server, the respective URL are available in a readme.txt file inside each module.
+
 ## Boards available
   * STM32F4 
     * [STM32F4-Discovery](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/stm32f4discovery.html)
@@ -37,4 +39,6 @@ The **STM32CubeF4 MCU Package** projects are directly running on the STM32F4 ser
 	
 ## Troubleshooting
 
-** For any other question** related to the STM32F4 product, the tools, the environment, you can submit a topic on the [ST Community/STM32 MCUs forum](https://community.st.com/s/group/0F90X000000AXsASAW/stm32-mcus)
+**Caution** : The **Issues** requests are strictly limited to submit problems or suggestions related to the software delivered in this repo 
+
+**For any other question** related to the STM32F4 product, the hardware performance, the hardware characteristics, the tools, the environment, you can submit a topic on the [ST Community/STM32 MCUs forum](https://community.st.com/s/group/0F90X000000AXsASAW/stm32-mcus)
