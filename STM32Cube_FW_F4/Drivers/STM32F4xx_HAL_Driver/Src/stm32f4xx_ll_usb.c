@@ -317,7 +317,7 @@ HAL_StatusTypeDef USB_DevInit(USB_OTG_GlobalTypeDef *USBx, USB_OTG_CfgTypeDef cf
   else
   {
     /* Enable HW VBUS sensing */
-    USBx->GOTGCTL &= ~USB_OTG_GCCFG_NOVBUSSENS;
+    USBx->GCCFG &= ~USB_OTG_GCCFG_NOVBUSSENS;
     USBx->GCCFG |= USB_OTG_GCCFG_VBUSBSEN;
   }
 #endif /* defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx) */
