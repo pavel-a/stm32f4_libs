@@ -1,0 +1,22 @@
+Error in stm32f4xx_ll_usb.c, USB_DevInit
+reported by Marek Kuziel August 17, 2019
+https://community.st.com/s/question/0D50X0000BDmTcnSQF/error-in-stm32f4xxllusbc
+F4_1.24.1
+
+--- aaa/STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c
++++ bbb/STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c
+@@ -314,13 +314,13 @@
+     USBx->GCCFG &= ~USB_OTG_GCCFG_VBUSBSEN;
+     USBx->GCCFG &= ~USB_OTG_GCCFG_VBUSASEN;
+   }
+   else
+   {
+     /* Enable HW VBUS sensing */
+-    USBx->GOTGCTL &= ~USB_OTG_GCCFG_NOVBUSSENS;
++    USBx->GCCFG &= ~USB_OTG_GCCFG_NOVBUSSENS;
+     USBx->GCCFG |= USB_OTG_GCCFG_VBUSBSEN;
+   }
+ #endif /* defined(STM32F446xx) || defined(STM32F469xx) || defined(STM32F479xx) || defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx) */
+ 
+   /* Restart the Phy Clock */
+   USBx_PCGCCTL = 0U;
