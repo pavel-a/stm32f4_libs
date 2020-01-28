@@ -5,3 +5,5 @@ Utilities/PC_Software/*
 Middlewares/ST/TouchGFX
 # Too big
 #Middlewares/ST/STemWin/*
+/Documentation//STM32CubeF4GettingStarted.pdf
+/Drivers/CMSIS/docs/
